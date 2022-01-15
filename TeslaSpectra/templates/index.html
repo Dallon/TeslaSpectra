@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load custom_tags %}
+{% block content %}
+<h1>Welcome to TeslaSpectra!</h1>
+<div class="jumbotron">
+  <h2>The current price of a Model S is ${{ present_data|get_item:"Model_S" }}</h2>
+  <h2>The current price of a Model S Plaid is ${{present_data|get_item:"Model_S_Plaid"}}</h2>
+</div>
+
+
+
+{% endblock %}
