@@ -7,6 +7,13 @@
   <h2>The current price of a Model S Plaid is ${{present_data|get_item:"Model_S_Plaid"}}</h2>
 </div>
 
+<div class = "jumbotron">
+  <h1>Tesla's most recent patent filing</h1>
+  <h2> {{recentPatent|get_item:"patent"}}</h2>
+  <h3>filed on: {{recentPatent|get_item:"filing date"}}</h3>
+  <h4>Abstract</h4>
+  <p>{{recentPatent|get_item:"abstract"}}</p>
+</div>
 
 
 {% endblock %}
