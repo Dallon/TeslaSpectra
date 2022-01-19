@@ -1,15 +1,19 @@
 from django.views.generic import TemplateView
-from django.template.defaulttags import register
 from django.shortcuts import render
 import json
 
 
 def HomePage(request):
-    with open('/home/bitnami/htdocs/projects/TeslaSpectra/selenium/modelSCurrentPrices.json', 'r') as f:
+    with open('selenium/modelSCurrentPrices.json', 'r') as f:
         #json.load provides us with a python dictionary from the json file
         prices = json.load(f)
 #Render the context as 'context_data' taking in the python dictionary as the key.
-        return render(request,'index.html', {'present_data': prices})
+
+    with open('selenium/newpatent.json', 'r') as patentdetails:
+        newestPatentDetails = json.load(patentdetails)
+
+        return render(request, 'index.html', {'present_data': prices, 'recentPatent': newestPatentDetails})
+
 
 
 class TestPage(TemplateView):
@@ -21,11 +25,13 @@ class ThanksPage(TemplateView):
 
 
 def modelSPrices(request):
-    with open('/home/bitnami/htdocs/projects/TeslaSpectra/selenium/modelSCurrentPrices.json', 'r') as f:
+    with open('selenium/modelSCurrentPrices.json', 'r') as f:
         #json.load provides us with a python dictionary from the json file
         prices = json.load(f)
 
-    with open('/home/bitnami/htdocs/projects/TeslaSpectra/selenium/modelSHistoricalPrices.json', 'r') as f2:
+    with open('selenium/modelSHistoricalPrices.json', 'r') as f2:
         pastPrices = json.load(f2)
 #Render the context as 'context_data' taking in the python dictionaries as the key.
-        return render(request, 'test.html',{'present_data': prices, 'past_data': pastPrices})
+        return render(request, 'test.html', {'present_data': prices, 'past_data': pastPrices})
+
+
