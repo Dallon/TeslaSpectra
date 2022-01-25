@@ -34,4 +34,3 @@ def modelSPrices(request):
 #Render the context as 'context_data' taking in the python dictionaries as the key.
         return render(request, 'test.html', {'present_data': prices, 'past_data': pastPrices})
 
-
