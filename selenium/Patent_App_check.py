@@ -12,11 +12,9 @@ from datetime import datetime
 
 dateTimeObj = datetime.now()
 
-#patent_check() uses Selenium to go to the US Patent webpage search engine and scrape the
-#title of the most recent patent application name
-
-#patentUpdate() is run from within checkPatent()
-
+""" uses Selenium to go to the US Patent webpage search engine and scrape the
+title of the most recent patent application name
+"""
 
 # setting the URL you want to monitor(with urllib not selenium)
 def checkPatent():
