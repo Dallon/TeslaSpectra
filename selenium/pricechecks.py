@@ -51,7 +51,6 @@ def price_update():
 
 
         #Below we first check if the file is empty
-
         filepath = 'modelSHistoricalPrices.json'
         if os.stat(filepath).st_size == 0:
             data = [prices]
