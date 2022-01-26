@@ -39,18 +39,20 @@ def rTeslaMotors():
             new_Var = firstPostTimeStamp.split()
             firstPostTimeStamp = new_Var
 
-
+        # Because PostNumber represents the index number of the post we can use it to gather
+        # the relevant post data
         else:
             firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
              "div[@data-testid='post-container']//h3)[{}]".format(PostNumber)).text
-            print(firstPostTitle)
+            # print(firstPostTitle)
             firstPostUpvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
              "div[@data-testid='post-container'])[{}]//div[contains(@id, 'vote-arrows')]".format(PostNumber)).text
 
             #the if statement below allows us to view the upvotes as a number.
             if "." in firstPostUpvotes:
                 firstPostUpvotes = firstPostUpvotes.replace("k", "00").replace(".", "")
-
+            #if there are no votes, the votes placeholder says Vote. we need to change that
+            #to avoid an error.
             if firstPostUpvotes =='Vote':
                 firstPostUpvotes = 0
 
@@ -59,7 +61,7 @@ def rTeslaMotors():
             else:
                 hotPost = ''
 
-            print(firstPostUpvotes)
+            # print(firstPostUpvotes)
 
             rTeslaMotors = {'postTitle': firstPostTitle,
                             'postUpvotes': firstPostUpvotes,
@@ -70,19 +72,7 @@ def rTeslaMotors():
                 json.dump(rTeslaMotors, outfile)
             break
 
-    # Because PostNumber represents the index number of the post we can use it to gather
-    # the relevant post data
 
-
-    # first_post_title = driver.find_element(By.XPATH, "//*[@id='t3_s290ru']/div[3]/div[2]/div[2]/a/div/h3").text
-    # firstPostUpvotes = driver.find_element(By.XPATH, "//*[@id='vote-arrows-t3_s290ru']/div").text
-
-    #
-
-    # print(firstPostTimeStamp)
-    # print(thirdPostTimeStamp)
-    # print(secondPostTimeStamp)
-    # print(firstPostUpvotes)
 
 
 rTeslaMotors()
