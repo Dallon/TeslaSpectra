@@ -12,8 +12,11 @@ def HomePage(request):
     with open('selenium/newpatent.json', 'r') as patentdetails:
         newestPatentDetails = json.load(patentdetails)
 
-        return render(request, 'index.html', {'present_data': prices, 'recentPatent': newestPatentDetails})
+    with open('selenium/rTeslaMotors.json', 'r') as redditpost:
+        teslareddit = json.load(redditpost)
 
+        return render(request, 'index.html', {'present_data': prices, 'recentPatent': newestPatentDetails,
+                                              'rTeslaMotors': teslareddit})
 
 
 class TestPage(TemplateView):
