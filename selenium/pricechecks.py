@@ -11,33 +11,24 @@ from selenium.webdriver.chrome.options import Options
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
-
-
-
-
 dateTimeObj = datetime.now()
-
-
-
-
 website = 'https://www.tesla.com/en_CA/models/design?redirect=no#overview'
 s = Service(ChromeDriverManager().install())
 
-dateTimeObj = datetime.now()
 Model_S_Price = {}
 date_format = '%Y-%m-%d %H:%M:%S.%f'
 
 
 def price_update():
 
-    driver = webdriver.Chrome(service=s, options=chrome_options)
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         driver.get(website)
         time.sleep(3)
-        ModelS = driver.find_element\
-            (By.XPATH,"//div[@id='root']//label[contains(@for, '$MTS12-Model')]//p[contains(@class, 'price-not-included')]").text
-        ModelSPlaid = driver.find_element\
-            (By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS11-Model')]//p[contains(@class, 'price-not-included')]").text
+        ModelS = driver.find_element(By.XPATH,"//div[@id='root']//label[contains(@for, '$MTS12-Model')]//"
+                                              "p[contains(@class, 'price-not-included')]").text
+        ModelSPlaid = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS11-Model')]//"
+                                                    "p[contains(@class, 'price-not-included')]").text
 
         #below we remove the commas and dollar signs from the Car model prices so we can later compare
         # the integer values to historical prices.
