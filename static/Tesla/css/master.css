@@ -1,8 +1,15 @@
 .logo{
-    width: 38px;
-    height: 38px;
+    width: 100%;
+    max-width: 80px;
+    height: auto;
     margin-left: auto;
     position: relative; top: -10px;
+
+.nav{
+    height: 150px;
+}
+
+
 
 }
 .navbar-brand{
@@ -42,4 +49,24 @@ td{
   color: black;
   font-family: monospace;
   font-size: 45px;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+  color: red;
+  /* Remove the next line if you want the span to appear next to the h1 */
+
+  border-bottom: 1px solid #000;
+  padding: 10px 30px;
+}
+
+.nav a{
+
+    font-size: 2.8em;
+    position: relative; top: 20px;
+    }
+
+.navbar{
+     background-color: lightblue;
 }
