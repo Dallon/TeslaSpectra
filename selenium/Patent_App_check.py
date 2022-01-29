@@ -7,45 +7,52 @@ chrome_options = Options()
 chrome_options.add_argument("--disable-gpu")
 # chrome_options.add_argument("--headless")
 from selenium.webdriver.common.by import By
-import schedule, os, time, json
+import os, json
 from datetime import datetime
-
+import logging
+logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
+                    filename='logs/Patent_App_check.log', level=logging.INFO)
 dateTimeObj = datetime.now()
 
 """ uses Selenium to go to the US Patent webpage search engine and scrape the
 title of the most recent patent application name
 """
 
-# setting the URL you want to monitor(with urllib not selenium)
+
 def checkPatent():
     website = 'https://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=0&f=S&l=50&TERM1=Tesla%2C+Inc&FIELD1=&co1=AND&TERM2=&FIELD2=&d=PG01'
     s = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(options=chrome_options, service=s)
-    # try:
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get(website)
     scrapedPatentTitle = driver.find_element(By.XPATH, '//tr[2]/td[3]').text
     datetimeObj = datetime.now()
+    logging.info("process started--------------------------------------------")
     patentTitle = {
                 'patentTitle': scrapedPatentTitle,
                 'timeScraped': str(datetimeObj)}
-
-    referencePatentName = 'storedpatentname.json'
+    print("the scraped title is {}".format(patentTitle))
+    logging.info("the scraped title is {}".format(patentTitle))
+    referencePatentName = 'json/storedpatentname.json'
 
     if os.stat(referencePatentName).st_size == 0:
-        with open('storedpatentname.json', 'w') as outfile:
+        with open('json/storedpatentname.json', 'w') as outfile:
             json.dump(patentTitle, outfile)
+            logging.info("storepatentname file was empty, populating with latest scrape")
 
     else:
-        with open('storedpatentname.json', 'r') as readfile:
+        with open('json/storedpatentname.json', 'r') as readfile:
             archivedPatent = json.load(readfile)
 
         print(archivedPatent["patentTitle"])
+        logging.info("the archived patent title is: {}".format(archivedPatent["patentTitle"]))
 
         if scrapedPatentTitle == archivedPatent["patentTitle"]:
             print("There has been no new patent filing")
+            logging.info("There has been no new patent filing")
 
         else:
             print("there has been a change to the webpage!")
+            logging.info("there has been a change to the webpage!")
             #patent check will do all the work for us including appending to the newpatent.json file
             try:
                 driver.get(website)
@@ -57,25 +64,21 @@ def checkPatent():
                 date_filed = driver.find_element(By.XPATH, '//table/tbody/tr[3]/td[2]/b').text
                 abstract = driver.find_element(By.XPATH, '//body[@bgcolor="#FFFFFF"]/p[2]').text
 
-                # on next page, to get to the date filed use xpath //tbody/tr[3]/td[2]/b
-
                 patentEntry = {'patent': top_patent_title,
                                'filing date': date_filed,
                                'abstract': abstract,
                                'scraped_at': str(dateTimeObj)}
 
-                with open('newpatent.json', 'w') as outfile:
+                logging.info("Teslas most recent patent filing:{}".format(patentEntry))
+
+                with open('json/newpatent.json', 'w') as outfile:
                     json.dump(patentEntry, outfile)
 
+            except Exception as e:
+                print("error occured")
+                logging.exception("an error occurred!")
             finally:
                 driver.close()
 
-    # except Exception as e:
-    #     print("error occured")
 checkPatent()
-schedule.every().hour.do(checkPatent)
-while True:
-    # Checks whether a scheduled task
-    # is pending to run or not
-    schedule.run_pending()
-    time.sleep(1)
+logging.info("process completed-------------------------------------------------")
