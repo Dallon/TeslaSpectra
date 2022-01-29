@@ -5,9 +5,14 @@ from datetime import datetime
 import time
 import os
 import json
+import logging
+
+logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
+                    filename='logs/pricechecks.log', level=logging.INFO)
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
@@ -20,17 +25,17 @@ date_format = '%Y-%m-%d %H:%M:%S.%f'
 
 
 def price_update():
-
     driver = webdriver.Chrome(options=chrome_options)
     try:
         driver.get(website)
         time.sleep(3)
-        ModelS = driver.find_element(By.XPATH,"//div[@id='root']//label[contains(@for, '$MTS12-Model')]//"
-                                              "p[contains(@class, 'price-not-included')]").text
+        logging.info("process started-------------------------------------------------------------")
+        ModelS = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS12-Model')]//"
+                                               "p[contains(@class, 'price-not-included')]").text
         ModelSPlaid = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS11-Model')]//"
                                                     "p[contains(@class, 'price-not-included')]").text
 
-        #below we remove the commas and dollar signs from the Car model prices so we can later compare
+        # below we remove the commas and dollar signs from the Car model prices so we can later compare
         # the integer values to historical prices.
 
         ModelS = ModelS.replace("$", "").replace(",", "")
@@ -38,26 +43,28 @@ def price_update():
         prices = {'Model_S': ModelS,
                   'Model_S_Plaid': ModelSPlaid,
                   'scraped_at': str(dateTimeObj)}
-        print(prices)
+        print("the scraped prices are {}".format(prices))
+        logging.info("the scraped prices are {}".format(prices))
 
-
-        #Below we first check if the file is empty
-        filepath = 'modelSHistoricalPrices.json'
+        # Below we first check if the file is empty
+        filepath = 'json/modelSHistoricalPrices.json'
         if os.stat(filepath).st_size == 0:
             data = [prices]
+            logging.warning("had to populate the file with new data")
 
-            with open('modelSHistoricalPrices.json', 'w') as outfile:
+            with open('json/modelSHistoricalPrices.json', 'w') as outfile:
                 json.dump(data, outfile)
 
         # we now need to compare the new scraped values with the values from modelSHistoricalPrices.json.
-        # 1st we open the json file in read mode and then compare the latest price in HistoricalPrices
-        # (sorted by date) with the newly scraped value. If the values are equal
-        # we don't do anything with the scraped data. If the values are different
-        # we append the scraped data to the assigned variable and overwrite the json file contents.
+        #  1st we open the json file in read mode and then compare the latest price in HistoricalPrices
+        #  (sorted by date) with the newly scraped value. If the values are equal
+        #  we don't do anything with the scraped data. If the values are different
+        #  we append the scraped data to the assigned variable and overwrite the json file contents.
         else:
             print("checking data in the historical prices file.... Loading file")
+            logging.info("checking data in the historical prices file.... Loading file")
 
-            with open("modelSHistoricalPrices.json", "r") as read_content:
+            with open("json/modelSHistoricalPrices.json", "r") as read_content:
                 # here we convert the json object in the file into a python dict. These dicts
                 # are in a list.[{}]
                 unsorted_dicts = json.load(read_content)
@@ -74,24 +81,29 @@ def price_update():
 
             if ModelS == histPriceModelS and ModelSPlaid == histPriceModelSPlaid:
                 print("prices haven't changed")
+                logging.info("prices haven't changed")
                 pass
             else:
                 print("prices have changed--- logging changes")
-                with open("modelSCurrentPrices.json", "w") as outfile:
+                with open("json/modelSCurrentPrices.json", "w") as outfile:
                     json.dump(prices, outfile)
                     print("current price json updated")
+                    logging.info("current price json updated")
 
                 sorted_dicts.append(prices)
                 print(sorted_dicts)
-                with open("modelSHistoricalPrices.json", "w") as outfile:
+                with open("json/modelSHistoricalPrices.json", "w") as outfile:
                     json.dump(sorted_dicts, outfile)
                     print("historical prices json updated")
+                    logging.info("historical prices json updated")
 
     except Exception as e:
         print(e)
+        logging.exception("An error occured during the scrape and store process")
 
     finally:
-        driver.close() #refers to the connection to the selenium driver
+        driver.close()  # refers to the connection to the selenium driver
+        logging.info("program completed-------------------------------------------------------")
 
 
 price_update()

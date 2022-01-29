@@ -1,0 +1,11 @@
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - the scraped prices are {'Model_S': '121990', 'Model_S_Plaid': '169990', 'scraped_at': '2022-01-29 14:17:25.906418'}
+root - INFO - checking data in the historical prices file.... Loading file
+root - INFO - prices haven't changed
+root - INFO - program completed-------------------------------------------------------

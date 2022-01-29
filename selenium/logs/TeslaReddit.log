@@ -1,0 +1,30 @@
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.
+root - INFO - upvotes logged as 635
+root - INFO - scraped data logged: {'postTitle': 'Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.', 'postUpvotes': '635', 'hotPost': 'Super Hot', 'scraped_at': '2022-01-29 14:18:19.744239'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.
+root - INFO - upvotes logged as 867
+root - INFO - scraped data logged: {'postTitle': 'Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.', 'postUpvotes': '867', 'hotPost': 'Super Hot', 'scraped_at': '2022-01-29 15:23:50.015363'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.
+root - INFO - upvotes logged as 898
+root - INFO - scraped data logged: {'postTitle': 'Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.', 'postUpvotes': '898', 'hotPost': 'Super Hot', 'scraped_at': '2022-01-29 15:33:38.424480'}

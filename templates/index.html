@@ -16,8 +16,12 @@
 </div>
 <div class ="jumbotron">
   <header>
-  <h1>Hottest post on r/TeslaMotors</h1>
-  <span>{{rTeslaMotors|get_item:"hotPost"}}</span>
+  <h1>Today's hottest post on r/TeslaMotors</h1>
+    hotornot = {{rTeslaMotors|get_item:"hotPost"}}
+    {% if hotornot == '' %}
+    {% else %}
+     <span>{{rTeslaMotors|get_item:"hotPost"}}</span>
+    {% endif %}
 </header>
   <h2>{{rTeslaMotors|get_item:"postTitle"}}</h2>
   <h3>{{rTeslaMotors|get_item:"postUpvotes"}} Upvotes</h3>
