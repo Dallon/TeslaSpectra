@@ -1,17 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Montserrat:ital,wght@1,500&display=swap');
+
 .logo{
     width: 100%;
     max-width: 80px;
     height: auto;
     margin-left: auto;
     position: relative; top: -10px;
+}
 
-.nav{
-    height: 150px;
+.dollasign{
+color: #85bb65;
+font-family: 'Cardo';
+text-shadow: 2px 2px 2px #ababab;
+
+    // don't forget "display", "height" and "width" attributes
 }
 
 
 
+.turnBlue{
+    color: blue;
 }
+
 .navbar-brand{
   margin-bottom: 1px;
 }
