@@ -27,21 +27,23 @@ def rTeslaMotors():
         "div[@data-testid='post-container']//a[@data-click-id='timestamp']").text
     splitString = firstPostTimeStamp.split()
     firstPostTimeStamp = splitString
+    print(splitString)
 
-    """The while loop below checks for the presence of 'days' in the timestamp of the 1st post, 
+    """The while loop below checks for the presence of 'days', 'months' etc in the timestamp of the 1st post, 
     re-assigning the variable firstPostTimeStamp to the next timestamp xpath if 'days' is found.
-     Then checking if there is 'days' on the new xpath, and if so it continues reassigning the 
-     variable until there is no longer 'days' in the timestamp. Then we know we've reached 
+     Then checking if there is 'days', 'months' etc on the new xpath, and if so it continues reassigning the 
+     variable until there is no longer 'days' etc in the timestamp. Then we know we've reached 
      the first 'Hot Post' of the past 24 hours"""
-    postNumber = 0
+    postNumber = 1
     while True:
-        if firstPostTimeStamp[1] == "days":
+        if firstPostTimeStamp[1] == "days" or firstPostTimeStamp[1] == "day" \
+                or firstPostTimeStamp[1] == "month" or firstPostTimeStamp[1] == "months":
             postNumber = postNumber + 1
             firstPostTimeStamp = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
     "div[@data-testid='post-container']//a[@data-click-id='timestamp'])[{}]".format(postNumber)).text
             new_Var = firstPostTimeStamp.split()
             firstPostTimeStamp = new_Var
-
+            print(firstPostTimeStamp)
         # Because PostNumber represents the index number of the post we can use it to gather
         # the relevant post data
         else:
