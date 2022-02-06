@@ -28,3 +28,110 @@ root - INFO - process started---------------------------------------------------
 root - INFO - first post title logged as Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.
 root - INFO - upvotes logged as 898
 root - INFO - scraped data logged: {'postTitle': 'Strange Fact: A gas-powered car burns more energy just to idle in a parking lot than an electric car uses to cruise down the road at 55MPH.', 'postUpvotes': '898', 'hotPost': 'Super Hot', 'scraped_at': '2022-01-29 15:33:38.424480'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Trying to download new driver from https://chromedriver.storage.googleapis.com/97.0.4692.71/chromedriver_win32.zip
+WDM - INFO - Driver has been saved in cache [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71]
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Your Tesla Support Thread - Q1 2022
+root - INFO - upvotes logged as 93
+root - INFO - scraped data logged: {'postTitle': 'Your Tesla Support Thread - Q1 2022', 'postUpvotes': '93', 'hotPost': '', 'scraped_at': '2022-02-05 17:16:39.885069'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Your Tesla Support Thread - Q1 2022
+root - INFO - upvotes logged as 91
+root - INFO - scraped data logged: {'postTitle': 'Your Tesla Support Thread - Q1 2022', 'postUpvotes': '91', 'hotPost': '', 'scraped_at': '2022-02-05 17:19:20.193226'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Your Tesla Support Thread - Q1 2022
+root - INFO - upvotes logged as 91
+root - INFO - scraped data logged: {'postTitle': 'Your Tesla Support Thread - Q1 2022', 'postUpvotes': '91', 'hotPost': '', 'scraped_at': '2022-02-05 17:20:12.155731'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Your Tesla Support Thread - Q1 2022
+root - INFO - upvotes logged as 93
+root - INFO - scraped data logged: {'postTitle': 'Your Tesla Support Thread - Q1 2022', 'postUpvotes': '93', 'hotPost': '', 'scraped_at': '2022-02-05 17:22:35.222645'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 97.0.4692
+WDM - INFO - Get LATEST chromedriver version for 97.0.4692 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\97.0.4692.71\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Ask car sales apparently doesn't like the idea of Tesla direct to customer
+root - INFO - upvotes logged as 1800
+root - INFO - scraped data logged: {'postTitle': "Ask car sales apparently doesn't like the idea of Tesla direct to customer", 'postUpvotes': '1800', 'hotPost': 'Super Hot', 'scraped_at': '2022-02-05 17:34:59.541166'}
