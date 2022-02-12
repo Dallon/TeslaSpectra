@@ -1,11 +1,14 @@
 # Importing libraries
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
 
 options = Options()
 options.headless = True
-driver = webdriver.Firefox(options=options, executable_path=r"C:\Users\Compuester\Documents\geckodriver.exe")
+options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
 import os, json
 from datetime import datetime
 import logging
