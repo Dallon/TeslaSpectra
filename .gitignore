@@ -17,3 +17,7 @@ selenium/json/newpatent.json
 *.json
 *.log
 *.log
+selenium/json/newpatent.json
+*.json
+selenium/json/storedpatentname.json
+*.log
