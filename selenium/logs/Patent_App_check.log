@@ -50,3 +50,8 @@ root - INFO - the scraped title is {'patentTitle': 'ELECTRIC DRIVE UNIT COOLING 
 root - INFO - the archived patent title is: ELECTRIC DRIVE UNIT COOLING SYSTEMS AND METHODS
 root - INFO - There has been no new patent filing
 root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS', 'timeScraped': '2022-02-12 22:04:00.248503'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
