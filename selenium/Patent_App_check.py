@@ -1,12 +1,11 @@
 # Importing libraries
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-chrome_options = Options()
-chrome_options.add_argument("--disable-gpu")
-# chrome_options.add_argument("--headless")
 from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.options import Options
+
+options = Options()
+options.headless = True
+driver = webdriver.Firefox(options=options, executable_path=r"C:\Users\Compuester\Documents\geckodriver.exe")
 import os, json
 from datetime import datetime
 import logging
@@ -21,8 +20,7 @@ title of the most recent patent application name
 
 def checkPatent():
     website = 'https://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=0&f=S&l=50&TERM1=Tesla%2C+Inc&FIELD1=&co1=AND&TERM2=&FIELD2=&d=PG01'
-    s = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(options=chrome_options)
+
     driver.get(website)
     scrapedPatentTitle = driver.find_element(By.XPATH, '//tr[2]/td[3]').text
     datetimeObj = datetime.now()
@@ -73,6 +71,9 @@ def checkPatent():
 
                 with open('json/newpatent.json', 'w') as outfile:
                     json.dump(patentEntry, outfile)
+
+                with open('json/storedpatentname.json', 'w') as outfile:
+                    json.dump(patentTitle, outfile)
 
             except Exception as e:
                 print("error occured")

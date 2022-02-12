@@ -4,3 +4,16 @@ Tesla/__pycache__/selenium/TeslaDB Create.py
 *.css
 *.css
 *.pyc
+Datetimer.py
+.idea/.name
+*.log
+selenium/json/rTeslaMotors.json
+selenium/json/newpatent.json
+selenium/json/storedpatentname.json
+selenium/logs/Patent_App_check.log
+selenium/logs/TeslaReddit.log
+.idea/.name
+selenium/json/newpatent.json
+*.json
+*.log
+*.log
