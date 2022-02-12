@@ -5,9 +5,6 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from datetime import datetime
 import json
-import time
-import os
-import schedule
 import logging
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
                     filename='logs/TeslaReddit.log', level=logging.INFO)
