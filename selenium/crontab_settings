@@ -15,17 +15,10 @@
 # email to the user the crontab file belongs to (unless redirected).
 # 
 
+#patent app check every hour
 
-#Patent App_check.py runes every hour at minute 0
-
-0 */1 * * * cd /home/bitnami/htdocs/projects/TeslaSpectra/Selenium && /opt/bitnami/python/bin/python Patent_App_check.py
+0 */1 * * * /opt/bitnami/python/bin/python /home/bitnami/htdocs/projects/TeslaSpectra/selenium/Patent_App_check.py >> /home/bitnami/teslog.log 2>&1
 
 #TeslaReddit.py runs every 10 minutes
 
- */10 * * * * cd /home/bitnami/htdocs/projects/TeslaSpectra/Selenium && /opt/bitnami/python/bin/python TeslaReddit.py
-
-#pricechecks.py runes every hour at the 30 minute mark
-
-30 */1 * * * cd /home/bitnami/htdocs/projects/TeslaSpectra/Selenium && /opt/bitnami/python/bin/python Patent_App_check.py
-
-
+*/4 * * * * /opt/bitnami/python/bin/python /home/bitnami/htdocs/projects/TeslaSpectra/selenium/TeslaReddit.py >> /home/bitnami/teslog.log 2>&1
