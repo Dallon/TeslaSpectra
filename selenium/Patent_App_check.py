@@ -13,7 +13,7 @@ import os, json
 from datetime import datetime
 import logging
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename='logs/Patent_App_check.log', level=logging.INFO)
+                    filename='/home/bitnami/htdocs/projects/TeslaSpectra/selenium/logs/Patent_App_check.log', level=logging.INFO)
 dateTimeObj = datetime.now()
 
 """ uses Selenium to go to the US Patent webpage search engine and scrape the

@@ -8,7 +8,7 @@ import json
 import logging
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename='logs/pricechecks.log', level=logging.INFO)
+                    filename='/home/bitnami/htdocs/projects/TeslaSpectra/selenium/logs/pricechecks.log', level=logging.INFO)
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options

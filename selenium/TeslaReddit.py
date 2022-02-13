@@ -7,7 +7,7 @@ from datetime import datetime
 import json
 import logging
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename='logs/TeslaReddit.log', level=logging.INFO)
+                    filename='/home/bitnami/htdocs/projects/TeslaSpectra/selenium/logs/TeslaReddit.log', level=logging.INFO)
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
