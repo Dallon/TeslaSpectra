@@ -22,3 +22,5 @@ selenium/json/newpatent.json
 selenium/json/storedpatentname.json
 *.log
 selenium/geckodriver-v0.30.0-linux64.tar.gz
+*.json
+*.log

@@ -135,3 +135,13 @@ root - INFO - process started---------------------------------------------------
 root - INFO - first post title logged as Ask car sales apparently doesn't like the idea of Tesla direct to customer
 root - INFO - upvotes logged as 1800
 root - INFO - scraped data logged: {'postTitle': "Ask car sales apparently doesn't like the idea of Tesla direct to customer", 'postUpvotes': '1800', 'hotPost': 'Super Hot', 'scraped_at': '2022-02-05 17:34:59.541166'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 98.0.4758
+WDM - INFO - Get LATEST chromedriver version for 98.0.4758 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\98.0.4758.80\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Tired of tripping over cable
+root - INFO - upvotes logged as 735
+root - INFO - scraped data logged: {'postTitle': 'Tired of tripping over cable', 'postUpvotes': '735', 'hotPost': 'Super Hot', 'scraped_at': '2022-02-13 16:25:20.408844'}

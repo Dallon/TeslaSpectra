@@ -55,3 +55,10 @@ root - INFO - the scraped title is {'patentTitle': 'MULTI-CHANNEL SENSOR SIMULAT
 root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
 root - INFO - There has been no new patent filing
 root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS', 'timeScraped': '2022-02-13 16:20:11.730609'}
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS', 'timeScraped': '2022-02-13 16:20:35.586080'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
