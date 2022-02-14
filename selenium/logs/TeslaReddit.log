@@ -145,3 +145,13 @@ root - INFO - process started---------------------------------------------------
 root - INFO - first post title logged as Tired of tripping over cable
 root - INFO - upvotes logged as 735
 root - INFO - scraped data logged: {'postTitle': 'Tired of tripping over cable', 'postUpvotes': '735', 'hotPost': 'Super Hot', 'scraped_at': '2022-02-13 16:25:20.408844'}
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - first post title logged as Tired of tripping over cable
+root - INFO - upvotes logged as 781
+root - INFO - scraped data logged: {'postTitle': 'Tired of tripping over cable', 'postUpvotes': '781', 'hotPost': 'Super Hot', 'scraped_at': '2022-02-13 16:38:55.919359'}
