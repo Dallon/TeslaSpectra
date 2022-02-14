@@ -6,9 +6,12 @@ import time
 import os
 import json
 import logging
+"""Convert relative to absolute paths to avoid conflict in crontab"""
+script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
+script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename='/home/bitnami/htdocs/projects/TeslaSpectra/selenium/logs/pricechecks.log', level=logging.INFO)
+                    filename=script_dir + '/logs/pricechecks.log', level=logging.INFO)
 
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -47,12 +50,12 @@ def price_update():
         logging.info("the scraped prices are {}".format(prices))
 
         # Below we first check if the file is empty
-        filepath = 'json/modelSHistoricalPrices.json'
+        filepath = script_dir + '/json/modelSHistoricalPrices.json'
         if os.stat(filepath).st_size == 0:
             data = [prices]
             logging.warning("had to populate the file with new data")
 
-            with open('json/modelSHistoricalPrices.json', 'w') as outfile:
+            with open(script_dir + '/json/modelSHistoricalPrices.json', 'w') as outfile:
                 json.dump(data, outfile)
 
         # we now need to compare the new scraped values with the values from modelSHistoricalPrices.json.
@@ -64,7 +67,7 @@ def price_update():
             print("checking data in the historical prices file.... Loading file")
             logging.info("checking data in the historical prices file.... Loading file")
 
-            with open("json/modelSHistoricalPrices.json", "r") as read_content:
+            with open(script_dir + "/json/modelSHistoricalPrices.json", "r") as read_content:
                 # here we convert the json object in the file into a python dict. These dicts
                 # are in a list.[{}]
                 unsorted_dicts = json.load(read_content)
@@ -85,14 +88,14 @@ def price_update():
                 pass
             else:
                 print("prices have changed--- logging changes")
-                with open("json/modelSCurrentPrices.json", "w") as outfile:
+                with open(script_dir + "/json/modelSCurrentPrices.json", "w") as outfile:
                     json.dump(prices, outfile)
                     print("current price json updated")
                     logging.info("current price json updated")
 
                 sorted_dicts.append(prices)
                 print(sorted_dicts)
-                with open("json/modelSHistoricalPrices.json", "w") as outfile:
+                with open(script_dir + "/json/modelSHistoricalPrices.json", "w") as outfile:
                     json.dump(sorted_dicts, outfile)
                     print("historical prices json updated")
                     logging.info("historical prices json updated")

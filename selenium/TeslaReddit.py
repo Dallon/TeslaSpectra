@@ -6,8 +6,14 @@ from selenium.webdriver.common.by import By
 from datetime import datetime
 import json
 import logging
+import time
+import os
+"""Convert relative to absolute paths to avoid conflict in crontab"""
+script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
+script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
+
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename='/home/bitnami/htdocs/projects/TeslaSpectra/selenium/logs/TeslaReddit.log', level=logging.INFO)
+                    filename=script_dir + '/logs/TeslaReddit.log', level=logging.INFO)
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--disable-gpu")
@@ -74,7 +80,7 @@ def rTeslaMotors():
 
             logging.info("scraped data logged: {}".format(TeslaMotors))
 
-            with open('json/rTeslaMotors.json', 'w') as outfile:
+            with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
                 json.dump(TeslaMotors, outfile)
             break
             logging.info("process completed------------------------------------------------------")

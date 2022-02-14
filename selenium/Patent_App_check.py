@@ -5,6 +5,7 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
 
+
 options = Options()
 options.headless = True
 options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
@@ -12,9 +13,16 @@ driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), optio
 import os, json
 from datetime import datetime
 import logging
+"""Convert relative to absolute paths to avoid conflict in crontab"""
+script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
+script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
+
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename='/home/bitnami/htdocs/projects/TeslaSpectra/selenium/logs/Patent_App_check.log', level=logging.INFO)
+                    filename=script_dir + '/logs/Patent_App_check.log', level=logging.INFO)
 dateTimeObj = datetime.now()
+
+
+
 
 """ uses Selenium to go to the US Patent webpage search engine and scrape the
 title of the most recent patent application name
@@ -36,12 +44,12 @@ def checkPatent():
     referencePatentName = 'json/storedpatentname.json'
 
     if os.stat(referencePatentName).st_size == 0:
-        with open('json/storedpatentname.json', 'w') as outfile:
+        with open(script_dir + '/json/storedpatentname.json', 'w') as outfile:
             json.dump(patentTitle, outfile)
             logging.info("storepatentname file was empty, populating with latest scrape")
 
     else:
-        with open('json/storedpatentname.json', 'r') as readfile:
+        with open(script_dir + '/json/storedpatentname.json', 'r') as readfile:
             archivedPatent = json.load(readfile)
 
         print(archivedPatent["patentTitle"])
@@ -72,10 +80,10 @@ def checkPatent():
 
                 logging.info("Teslas most recent patent filing:{}".format(patentEntry))
 
-                with open('json/newpatent.json', 'w') as outfile:
+                with open(script_dir + '/json/newpatent.json', 'w') as outfile:
                     json.dump(patentEntry, outfile)
 
-                with open('json/storedpatentname.json', 'w') as outfile:
+                with open(script_dir + '/json/storedpatentname.json', 'w') as outfile:
                     json.dump(patentTitle, outfile)
 
             except Exception as e:
