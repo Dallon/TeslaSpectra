@@ -1,12 +1,20 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
 from datetime import datetime
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from webdriver_manager.firefox import GeckoDriverManager
+from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.firefox.options import Options
+options = Options()
+options.headless = True
+# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+
+
+
+
 import json
 import logging
-import time
+
+
 import os
 """Convert relative to absolute paths to avoid conflict in crontab"""
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
@@ -14,13 +22,9 @@ script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
                     filename=script_dir + '/logs/TeslaReddit.log', level=logging.INFO)
-chrome_options = Options()
-chrome_options.add_argument("--headless")
-chrome_options.add_argument("--disable-gpu")
 dateTimeObj = datetime.now()
-s = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(options=chrome_options)
 
+driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
 
 def rTeslaMotors():
     logging.info("process started-------------------------------------------------------------")
