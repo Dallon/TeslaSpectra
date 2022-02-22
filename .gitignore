@@ -30,3 +30,6 @@ selenium/test.py
 Tesla/settings.py
 *.json
 *.log
+selenium/Patent_App_check_windows.py
+selenium/test.py
+selenium/test.jpg
