@@ -7,15 +7,16 @@ from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
 # options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
-
-
-
-
 import json
 import logging
-
-
 import os
+import boto3
+from Tesla import settings
+
+#create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
+s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
+                  aws_secret_access_key= settings.aws_secret_access_key)
+
 """Convert relative to absolute paths to avoid conflict in crontab"""
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
@@ -25,6 +26,7 @@ logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
 dateTimeObj = datetime.now()
 
 driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
+
 
 def rTeslaMotors():
     logging.info("process started-------------------------------------------------------------")
@@ -86,6 +88,8 @@ def rTeslaMotors():
 
             with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
                 json.dump(TeslaMotors, outfile)
+            with open(script_dir + "/json/rTeslaMotors.json", "rb") as f:
+                s3.upload_fileobj(f, "teslaspectrajson", "rTeslaMotors.json")
             break
             logging.info("process completed------------------------------------------------------")
 
