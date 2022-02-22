@@ -12,9 +12,11 @@ script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
                     filename=script_dir + '/logs/pricechecks.log', level=logging.INFO)
-
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
+import boto3
+from Tesla import settings
+
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -26,6 +28,10 @@ s = Service(ChromeDriverManager().install())
 Model_S_Price = {}
 date_format = '%Y-%m-%d %H:%M:%S.%f'
 
+
+#create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
+s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
+                  aws_secret_access_key= settings.aws_secret_access_key)
 
 def price_update():
     driver = webdriver.Chrome(options=chrome_options)
@@ -68,7 +74,7 @@ def price_update():
             logging.info("checking data in the historical prices file.... Loading file")
 
             with open(script_dir + "/json/modelSHistoricalPrices.json", "r") as read_content:
-                # here we convert the json object in the file into a python dict. These dicts
+                # here we convert the json object in the file into a python dict. These dictionaries
                 # are in a list.[{}]
                 unsorted_dicts = json.load(read_content)
 
@@ -93,16 +99,23 @@ def price_update():
                     print("current price json updated")
                     logging.info("current price json updated")
 
+                with open(script_dir + '/json/modelSCurrentPrices.json', 'rb') as f:
+                    s3.upload_fileobj(f, "teslaspectrajson", "modelSCurrentPrices.json")
+
+
                 sorted_dicts.append(prices)
                 print(sorted_dicts)
                 with open(script_dir + "/json/modelSHistoricalPrices.json", "w") as outfile:
                     json.dump(sorted_dicts, outfile)
+
+                with open(script_dir + '/json/modelSHistoricalPrices.json', 'rb') as f:
+                    s3.upload_fileobj(f, "teslaspectrajson", "modelSHistoricalPrices.json")
                     print("historical prices json updated")
                     logging.info("historical prices json updated")
 
     except Exception as e:
         print(e)
-        logging.exception("An error occured during the scrape and store process")
+        logging.exception(e)
 
     finally:
         driver.close()  # refers to the connection to the selenium driver
