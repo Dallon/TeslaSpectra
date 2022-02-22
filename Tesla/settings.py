@@ -141,3 +141,5 @@ LOGOUT_REDIRECT_URL = 'thanks'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+aws_access_key_id ='AKIA4AFAWUFJYCZ6KLDM'
+aws_secret_access_key = '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'

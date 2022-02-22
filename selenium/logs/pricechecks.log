@@ -48,3 +48,48 @@ root - INFO - the scraped prices are {'Model_S': '121990', 'Model_S_Plaid': '169
 root - INFO - checking data in the historical prices file.... Loading file
 root - INFO - prices haven't changed
 root - INFO - program completed-------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 98.0.4758
+WDM - INFO - Get LATEST chromedriver version for 98.0.4758 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\98.0.4758.102\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - the scraped prices are {'Model_S': '121990', 'Model_S_Plaid': '169990', 'scraped_at': '2022-02-21 20:52:54.795581'}
+root - INFO - checking data in the historical prices file.... Loading file
+root - INFO - prices haven't changed
+root - INFO - program completed-------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 98.0.4758
+WDM - INFO - Get LATEST chromedriver version for 98.0.4758 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\98.0.4758.102\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - the scraped prices are {'Model_S': '121990', 'Model_S_Plaid': '169990', 'scraped_at': '2022-02-21 20:53:34.015241'}
+root - WARNING - had to populate the file with new data
+root - INFO - program completed-------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 98.0.4758
+WDM - INFO - Get LATEST chromedriver version for 98.0.4758 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\98.0.4758.102\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - the scraped prices are {'Model_S': '121990', 'Model_S_Plaid': '169990', 'scraped_at': '2022-02-21 20:54:16.547218'}
+root - INFO - checking data in the historical prices file.... Loading file
+root - INFO - current price json updated
+root - INFO - historical prices json updated
+root - INFO - program completed-------------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current google-chrome version is 98.0.4758
+WDM - INFO - Get LATEST chromedriver version for 98.0.4758 google-chrome
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\chromedriver\win32\98.0.4758.102\chromedriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - the scraped prices are {'Model_S': '121990', 'Model_S_Plaid': '169990', 'scraped_at': '2022-02-21 20:55:51.472911'}
+root - INFO - checking data in the historical prices file.... Loading file
+root - INFO - current price json updated
+root - INFO - historical prices json updated
+root - INFO - program completed-------------------------------------------------------

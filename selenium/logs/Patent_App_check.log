@@ -62,3 +62,109 @@ root - INFO - the scraped title is {'patentTitle': 'MULTI-CHANNEL SENSOR SIMULAT
 root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
 root - INFO - There has been no new patent filing
 root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 19:50:04.578402'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a change to the webpage!
+root - ERROR - an error occurred!
+Traceback (most recent call last):
+  File "C:/Users/Compuester/PycharmProjects/Django Course/TeslaSpectra/selenium/Patent_App_check.py", line 72, in checkPatent
+    date_filed = driver.find_element(By.XPATH, '//table/tbody/tr[3]/td[2]/b').text
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 424, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //table/tbody/tr[3]/td[2]/b
+Stacktrace:
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.jsm:183:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.jsm:395:5
+element.find/</<@chrome://remote/content/marionette/element.js:300:16
+
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 19:58:46.269806'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a new patent filing!
+root - ERROR - an error occurred!
+Traceback (most recent call last):
+  File "C:/Users/Compuester/PycharmProjects/Django Course/TeslaSpectra/selenium/Patent_App_check_windows.py", line 72, in checkPatent
+    date_filed = driver.find_element(By.XPATH, '//table/tbody/tr[3]/td[2]/b').text
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 424, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //table/tbody/tr[3]/td[2]/b
+Stacktrace:
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.jsm:183:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.jsm:395:5
+element.find/</<@chrome://remote/content/marionette/element.js:300:16
+
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 19:59:23.294480'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a new patent filing!
+root - ERROR - an error occurred!
+Traceback (most recent call last):
+  File "C:/Users/Compuester/PycharmProjects/Django Course/TeslaSpectra/selenium/Patent_App_check_windows.py", line 72, in checkPatent
+    date_filed = driver.find_element(By.XPATH, '//table/tbody/tr[3]/td[2]/b').text
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 424, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: //table/tbody/tr[3]/td[2]/b
+Stacktrace:
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.jsm:183:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.jsm:395:5
+element.find/</<@chrome://remote/content/marionette/element.js:300:16
+
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 19:59:55.312316'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a new patent filing!
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:03:37.032330'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a new patent filing!
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:04:44.570501'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a new patent filing!
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:24:23.770290'}
+root - INFO - the archived patent title is: MULTI-CHANNEL SENSOR SIMULATION FOR AUTONOMOUS CONTROL SYSTEMS
+root - INFO - there has been a change to the webpage!
+root - INFO - Teslas most recent patent filing:{'patent': 'ELECTRONIC ASSEMBLY', 'filing date': 'February 17, 2022', 'abstract': 'An electronic assembly includes a substrate having a first surface and a second surface opposite to the first surface and a plurality of stiffening members coupled to the substrate. The substrate further includes a plurality of substrate interconnects. The electronic assembly further includes a plurality of semiconductor dies mounted on the first surface of the substrate. The plurality of semiconductor dies are electrically connected to each other via the plurality of substrate interconnects. The electronic assembly further includes a plurality of power supply modules mounted on the second surface of the substrate. Each power supply module is disposed opposite to a respective semiconductor die.', 'scraped_at': '2022-02-21 20:24:22.184012'}
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:35:03.018806'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:36:55.116678'}
+root - INFO - storepatentname file was empty, populating with latest scrape
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:37:49.371815'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:41:35.840282'}
+root - INFO - the archived patent title is: ELECTOOIC ASSEMBLY
+root - INFO - there has been a new patent filing!
+root - INFO - Teslas most recent patent filing:{'patent': 'ELECTRONIC ASSEMBLY', 'filing date': 'February 17, 2022', 'abstract': 'An electronic assembly includes a substrate having a first surface and a second surface opposite to the first surface and a plurality of stiffening members coupled to the substrate. The substrate further includes a plurality of substrate interconnects. The electronic assembly further includes a plurality of semiconductor dies mounted on the first surface of the substrate. The plurality of semiconductor dies are electrically connected to each other via the plurality of substrate interconnects. The electronic assembly further includes a plurality of power supply modules mounted on the second surface of the substrate. Each power supply module is disposed opposite to a respective semiconductor die.', 'scraped_at': '2022-02-21 20:41:33.274674'}
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-21 20:52:47.487627'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------

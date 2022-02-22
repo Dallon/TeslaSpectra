@@ -27,3 +27,6 @@ selenium/geckodriver-v0.30.0-linux64.tar.gz
 *.log
 *.json
 selenium/test.py
+Tesla/settings.py
+*.json
+*.log
