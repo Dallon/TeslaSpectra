@@ -14,6 +14,6 @@ selenium/logs/TeslaReddit.log
 selenium/geckodriver-v0.30.0-linux64.tar.gz
 
 selenium/test.py
-settings.py
+Tesla/settings.py
 selenium/Patent_App_check_windows.py
 selenium/test.jpg
