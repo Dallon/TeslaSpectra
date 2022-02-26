@@ -4,11 +4,13 @@ from selenium.webdriver.common.by import By
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.service import Service
 
 options = Options()
 options.headless = True
-# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
-driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
+options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+s = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(service=s, options=options)
 import os, json
 from datetime import datetime
 import logging
