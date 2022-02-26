@@ -168,3 +168,8 @@ root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeS
 root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
 root - INFO - There has been no new patent filing
 root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-22 16:48:45.996471'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
