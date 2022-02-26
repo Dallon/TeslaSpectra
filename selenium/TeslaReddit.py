@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
+from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
@@ -13,30 +14,31 @@ import os
 import boto3
 from Tesla import settings
 
-#create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
-                  aws_secret_access_key= settings.aws_secret_access_key)
-
-"""Convert relative to absolute paths to avoid conflict in crontab"""
+#Convert relative to absolute paths to avoid conflict in crontab
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
+
+
+#create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
+s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
+                  aws_secret_access_key = settings.aws_secret_access_key)
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
                     filename=script_dir + '/logs/TeslaReddit.log', level=logging.INFO)
 dateTimeObj = datetime.now()
-
-driver = webdriver.Firefox(executable_path=GeckoDriverManager().install(), options=options)
+s = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(service=s, options=options)
 
 
 def rTeslaMotors():
     logging.info("process started-------------------------------------------------------------")
     website = 'http://www.reddit.com/r/teslamotors'
     driver.get(website)
-    firstPostTimeStamp = driver.find_element(By.XPATH, "//div[contains(@class, 'rpBJOH')]//"
+    postTimeStamp = driver.find_element(By.XPATH, "//div[contains(@class, 'rpBJOH')]//"
         "div[@data-testid='post-container']//a[@data-click-id='timestamp']").text
-    splitString = firstPostTimeStamp.split()
-    firstPostTimeStamp = splitString
-    print(splitString)
+    splitString = postTimeStamp.split()
+    postTimeStamp = splitString
+    print("Confirm scaper works by taking first listed post's timestamp and displaying it:" + str(splitString))
 
     """The while loop below checks for the presence of 'days', 'months' etc in the timestamp of the 1st post, 
     re-assigning the variable firstPostTimeStamp to the next timestamp xpath if 'days' is found.
@@ -45,54 +47,67 @@ def rTeslaMotors():
      the first 'Hot Post' of the past 24 hours"""
     postNumber = 1
     while True:
-        if firstPostTimeStamp[1] == "days" or firstPostTimeStamp[1] == "day" \
-                or firstPostTimeStamp[1] == "month" or firstPostTimeStamp[1] == "months":
+        if postTimeStamp[1] == "days" or postTimeStamp[1] == "day" \
+                or postTimeStamp[1] == "month" or postTimeStamp[1] == "months":
             postNumber = postNumber + 1
-            firstPostTimeStamp = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+            postTimeStamp = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
     "div[@data-testid='post-container']//a[@data-click-id='timestamp'])[{}]".format(postNumber)).text
-            new_Var = firstPostTimeStamp.split()
-            firstPostTimeStamp = new_Var
-            print(firstPostTimeStamp)
+            postTimeStamp = postTimeStamp.split()
+
+            print("The #{} post's timestamp is:".format(postNumber) + str(postTimeStamp))
+
         # Because PostNumber represents the index number of the post we can use it to gather
         # the relevant post data
         else:
-            firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
-             "div[@data-testid='post-container']//h3)[{}]".format(postNumber)).text
-            print(firstPostTitle)
-            logging.info("first post title logged as {}".format(firstPostTitle))
-            firstPostUpvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
-             "div[@data-testid='post-container'])[{}]//div[contains(@id, 'vote-arrows')]".format(postNumber)).text
+            try:
+                firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+                 "div[@data-testid='post-container']//h3)[{}]".format(postNumber)).text
+                print("the #{} post timestamp contains {}"
+    " making it the first hot post of the day".format(postNumber,postTimeStamp[1]))
+                print("The first hot post Title is: {}".format(firstPostTitle))
+                logging.info("The Title was logged")
+                firstPostUpvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+                 "div[@data-testid='post-container'])[{}]//div[contains(@id, 'vote-arrows')]".format(postNumber)).text
+                print("The upvotes were sucessfully scraped at: {}".format(firstPostUpvotes))
 
-            #the if statement below allows us to view the upvotes as a number.
-            if "." in firstPostUpvotes:
-                firstPostUpvotes = firstPostUpvotes.replace("k", "00").replace(".", "")
+                #the if statement below allows us to view the upvotes as a number.
+                if "." in firstPostUpvotes:
+                    firstPostUpvotes = firstPostUpvotes.replace("k", "00").replace(".", "")
 
-            #if there are no votes, the votes placeholder says Vote. we need to change that
-            #to avoid an error.
-            if firstPostUpvotes == 'Vote':
-                firstPostUpvotes = 0
+                #if there are no votes, the votes placeholder says Vote. we need to change that
+                #to avoid an error.
+                if firstPostUpvotes == 'Vote':
+                    firstPostUpvotes = 0
 
-            logging.info("upvotes logged as {}".format(firstPostUpvotes))
+                logging.info("upvotes logged as {}".format(firstPostUpvotes))
 
-            if int(firstPostUpvotes) > 500:
-                hotPost = 'Super Hot'
-            else:
-                hotPost = ''
+                if int(firstPostUpvotes) > 500:
+                    hotPost = 'Super Hot'
+                else:
+                    hotPost = ''
 
-            TeslaMotors = {'postTitle': firstPostTitle,
-                         'postUpvotes': firstPostUpvotes,
-                         'hotPost': hotPost,
-                         'scraped_at': str(dateTimeObj)}
+                TeslaMotors = {'postTitle': firstPostTitle,
+                             'postUpvotes': firstPostUpvotes,
+                             'hotPost': hotPost,
+                             'scraped_at': str(dateTimeObj)}
 
-            logging.info("scraped data logged: {}".format(TeslaMotors))
+                logging.info("scraped data logged")
 
-            with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
-                json.dump(TeslaMotors, outfile)
-            with open(script_dir + "/json/rTeslaMotors.json", "rb") as f:
-                s3.upload_fileobj(f, "teslaspectrajson", "rTeslaMotors.json")
-            break
-            logging.info("process completed------------------------------------------------------")
+                with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
+                    json.dump(TeslaMotors, outfile)
+                print("r/TeslaMotors local JSON populated")
+                logging.info("r/TeslaMotors local JSON populated")
+                with open(script_dir + "/json/rTeslaMotors.json", "rb") as f:
+                    s3.upload_fileobj(f, "teslaspectrajson", "rTeslaMotors.json")
+                print("r/TeslaMotors S3 JSON populated")
+                logging.info("r/TeslaMotors S3 JSON populated")
 
+            except Exception as e:
+                print(e)
+                logging.exception(e)
+
+            finally:
+                driver.quit()
 
 rTeslaMotors()
 
