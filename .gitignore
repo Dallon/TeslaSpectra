@@ -19,3 +19,4 @@ selenium/Patent_App_check_windows.py
 selenium/test.jpg
 selenium/test.py
 *.log
+selenium/secretkeys.py
