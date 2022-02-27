@@ -3,3 +3,31 @@ root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeS
 root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
 root - INFO - There has been no new patent filing
 root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-26 12:25:16.079061'}
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-26 12:26:17.615591'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-26 12:28:44.093982'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-26 18:13:10.532954'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeScraped': '2022-02-26 18:21:19.653670'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - There has been no new patent filing
+root - INFO - process completed-------------------------------------------------

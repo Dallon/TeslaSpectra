@@ -1,4 +1,5 @@
 # Importing libraries
+from cffi.setuptools_ext import execfile
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.firefox import GeckoDriverManager
@@ -8,14 +9,12 @@ from selenium.webdriver.firefox.service import Service
 
 options = Options()
 options.headless = True
-options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
-s = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(service=s, options=options)
+# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
 import os, json
 from datetime import datetime
 import logging
 import boto3
-from Tesla import settings
+from ..TeslaSpectra.Tesla import settings
 
 #Convert relative to absolute paths to avoid conflict in crontab
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
@@ -23,16 +22,19 @@ script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
                     filename=script_dir + '/logs/Patent_App_check.log', level=logging.INFO)
-
 dateTimeObj = datetime.now()
 
 # create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
 s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id,
                   aws_secret_access_key=settings.aws_secret_access_key)
 
+
 """ uses Selenium to go to the US Patent webpage search engine and scrape the
 title of the most recent patent application name
 """
+s = Service(GeckoDriverManager().install())
+driver = webdriver.Firefox(service=s, options=options)
+
 def checkPatent():
     website = 'https://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=0&f=S&l=50&TERM1=Tesla%2C+Inc&FIELD1=&co1=AND&TERM2=&FIELD2=&d=PG01'
 
@@ -45,9 +47,9 @@ def checkPatent():
                 'timeScraped': str(datetimeObj)}
     print("the scraped title is {}".format(patentTitle))
     logging.info("the scraped title is {}".format(patentTitle))
-    referencePatentName = 'json/storedpatentname.json'
+    referencePatentName = '/json/storedpatentname.json'
 
-    if os.stat(referencePatentName).st_size == 0:
+    if os.stat(script_dir + referencePatentName).st_size == 0:
         with open(script_dir + '/json/storedpatentname.json', 'w') as outfile:
             json.dump(patentTitle, outfile)
 

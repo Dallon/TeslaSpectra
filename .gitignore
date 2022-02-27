@@ -1,10 +1,8 @@
 Tesla/__pycache__/selenium/test.py
 Tesla/__pycache__/selenium/TeslaDB Create.py
 *.pyc
-*.pyc
 Datetimer.py
 .idea/.name
-*.log
 selenium/json/rTeslaMotors.json
 selenium/json/newpatent.json
 selenium/json/storedpatentname.json
@@ -12,11 +10,9 @@ selenium/logs/Patent_App_check.log
 selenium/logs/TeslaReddit.log
 *.json
 selenium/geckodriver-v0.30.0-linux64.tar.gz
-
 selenium/test.py
 Tesla/settings.py
 selenium/Patent_App_check_windows.py
 selenium/test.jpg
-selenium/test.py
 *.log
 selenium/secretkeys.py
