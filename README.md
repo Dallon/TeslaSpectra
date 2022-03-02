@@ -1,4 +1,4 @@
-TeslaSpectra is a RESTful website mainly runon Python!
+TeslaSpectra is a RESTful website mainly run on Python!
 
 The website(In Development) is built with Django and the programs that populate the website are webscrapers built with Python. Originally intended as a blog about tesla news the website now is in building stages hopefully to become a hub of news information about Tesla from all over the web such as reddit, twitter, the US Patent Office, tesla news outlets etc.
 
