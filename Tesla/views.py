@@ -5,13 +5,16 @@ import boto3
 from Tesla import settings
 
 #create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
-                  aws_secret_access_key= settings.aws_secret_access_key)
+s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id,
+                  aws_secret_access_key=settings.aws_secret_access_key)
 
 
 def HomePage(request):
-    with open("selenium/json/modelSCurrentPrices.json", "wb") as f:
-        s3.download_fileobj("teslaspectrajson", "modelSCurrentPrices.json", f)
+    # create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
+    s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id,
+                      aws_secret_access_key=settings.aws_secret_access_key)
+    with open("selenium/json/modelSCurrentPrices.json", "wb") as readfile:
+        s3.download_fileobj("teslaspectrajson", "modelSCurrentPrices.json", readfile)
     with open('selenium/json/modelSCurrentPrices.json', 'r') as f:
         #json.load provides us with a python dictionary from the json file
         prices = json.load(f)
@@ -22,8 +25,8 @@ def HomePage(request):
     with open('selenium/json/newpatent.json', 'r') as patentdetails:
         newestPatentDetails = json.load(patentdetails)
 
-    with open("selenium/json/newpatent.json", "wb") as f:
-        s3.download_fileobj("teslaspectrajson", "newpatent.json", f)
+    with open("selenium/json/rTeslaMotors.json", "wb") as f:
+        s3.download_fileobj("teslaspectrajson", "rTeslaMotors.json", f)
     with open('selenium/json/rTeslaMotors.json', 'r') as redditpost:
         teslareddit = json.load(redditpost)
 

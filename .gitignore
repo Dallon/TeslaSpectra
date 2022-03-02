@@ -15,4 +15,4 @@ Tesla/settings.py
 selenium/Patent_App_check_windows.py
 selenium/test.jpg
 *.log
-selenium/secretkeys.py
+selenium/logs/secretkeys.py
