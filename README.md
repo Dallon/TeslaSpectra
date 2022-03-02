@@ -1,7 +1,6 @@
-Tesla Spectra mainly runs on Python!:D
+TeslaSpectra is a RESTful website mainly runon Python!
 
-The website is built with Django and the programs that populate the website are built with Python using Selenium as the webscraper. Originally intended as a blog about tesla news the website now is in building stages hopefully to become a hub of news information about Tesla from all over the web such as reddit, twitter, the US Patent Office, tesla news outlets and various tesla websites.
+The website(In Development) is built with Django and the programs that populate the website are webscrapers built with Python. Originally intended as a blog about tesla news the website now is in building stages hopefully to become a hub of news information about Tesla from all over the web such as reddit, twitter, the US Patent Office, tesla news outlets etc.
 
-Now on a Debian Linux server and managing the scripts with Crontab, the next step is to separate our website workflow from the computational requirements of our webscrapers. To do that I've created an AWS S3 bucket which will be the connecting repository between the website server. 
+The website and the webscrapers are now on separate Linux virtual machines both connecting to an amazon S3 "hot storage" bucket. The Bucket contains json files which hold the scraped information. Through Boto3, a Python module designed to allow manipulation of files in S3, the scrapers populate local JSON files on Linux VM1 and then replace corresponding JSON files in the S3 bucket. Likewise when a call to the webpage is made the json file in S3 is downloaded into the local JSON file on Linux VM2 which is then displayed as part of the webpage.
 
-The webscrapers connect to local files which are  written to after scraping has taken place and then those files uploaded to overwrite the JSON files in the bucket with new info. The website likewise connects to local JSON files which are written to from the bucket hosted files and then displayed.
