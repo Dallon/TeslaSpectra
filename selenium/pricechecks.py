@@ -15,7 +15,7 @@ logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 import boto3
-from Tesla import settings
+from logs import secretkeys
 
 
 chrome_options = Options()
@@ -30,8 +30,8 @@ date_format = '%Y-%m-%d %H:%M:%S.%f'
 
 
 #create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
-                  aws_secret_access_key= settings.aws_secret_access_key)
+s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
+                  aws_secret_access_key=secretkeys.aws_secret_access_key)
 
 def price_update():
     driver = webdriver.Chrome(options=chrome_options)
@@ -82,7 +82,6 @@ def price_update():
             # them by the parameter "scraped_at" using datetime.strptime
             sorted_dicts = sorted(unsorted_dicts,
                                   key=lambda x: datetime.strptime(x["scraped_at"], date_format))
-            print(sorted_dicts)
 
             # and here we assign variables to the scraped prices of the Model_S and Plaid cars.
             histPriceModelS = sorted_dicts[-1]['Model_S']
@@ -101,7 +100,6 @@ def price_update():
 
                 with open(script_dir + '/json/modelSCurrentPrices.json', 'rb') as f:
                     s3.upload_fileobj(f, "teslaspectrajson", "modelSCurrentPrices.json")
-
 
                 sorted_dicts.append(prices)
                 print(sorted_dicts)
