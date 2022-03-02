@@ -14,7 +14,7 @@ import os, json
 from datetime import datetime
 import logging
 import boto3
-from ..TeslaSpectra.Tesla import settings
+from logs import secretkeys
 
 #Convert relative to absolute paths to avoid conflict in crontab
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
@@ -25,8 +25,8 @@ logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
 dateTimeObj = datetime.now()
 
 # create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id,
-                  aws_secret_access_key=settings.aws_secret_access_key)
+s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
+                  aws_secret_access_key=secretkeys.aws_secret_access_key)
 
 
 """ uses Selenium to go to the US Patent webpage search engine and scrape the
