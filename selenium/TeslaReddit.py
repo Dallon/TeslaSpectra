@@ -7,12 +7,12 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
-# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
 import json
 import logging
 import os
 import boto3
-from Tesla import settings
+from logs import secretkeys
 
 #Convert relative to absolute paths to avoid conflict in crontab
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
@@ -20,15 +20,18 @@ script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
 
 #create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-s3 = boto3.client('s3', aws_access_key_id = settings.aws_access_key_id,
-                  aws_secret_access_key = settings.aws_secret_access_key)
+s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
+                  aws_secret_access_key=secretkeys.aws_secret_access_key)
 
 logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
                     filename=script_dir + '/logs/TeslaReddit.log', level=logging.INFO)
-dateTimeObj = datetime.now()
-s = Service(GeckoDriverManager().install())
-driver = webdriver.Firefox(service=s, options=options)
 
+dateTimeObj = datetime.now()
+driver = GeckoDriverManager().install()
+print("did we get here?)")
+s = Service(driver)
+driver = webdriver.Firefox(service=s, options=options)
+print("did we get here?)")
 
 def rTeslaMotors():
     logging.info("process started-------------------------------------------------------------")
