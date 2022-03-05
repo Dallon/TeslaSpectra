@@ -388,3 +388,238 @@ root - INFO - upvotes logged as 704
 root - INFO - scraped data logged
 root - INFO - r/TeslaMotors local JSON populated
 root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Getting latest mozilla release info for v0.30.0
+WDM - INFO - Trying to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-win64.zip
+WDM - INFO - Driver has been saved in cache [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0]
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 46
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 51
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 132
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - ERROR - Message: Unable to locate element: (//div[contains(@class, 'rpBJOH')]//div[@data-testid='post-container']//h3)[0]
+Stacktrace:
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.jsm:183:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.jsm:395:5
+element.find/</<@chrome://remote/content/marionette/element.js:300:16
+Traceback (most recent call last):
+  File "C:/Users/Compuester/PycharmProjects/Django Course/TeslaSpectra/selenium/TeslaReddit.py", line 62, in rTeslaMotors
+    firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 424, in execute
+    self.error_handler.check_response(response)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 247, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: (//div[contains(@class, 'rpBJOH')]//div[@data-testid='post-container']//h3)[0]
+Stacktrace:
+WebDriverError@chrome://remote/content/shared/webdriver/Errors.jsm:183:5
+NoSuchElementError@chrome://remote/content/shared/webdriver/Errors.jsm:395:5
+element.find/</<@chrome://remote/content/marionette/element.js:300:16
+
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 132
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 107
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002013244B7F0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element
+urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002013244B670>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element
+urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002013244B3D0>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element
+root - ERROR - HTTPConnectionPool(host='localhost', port=49639): Max retries exceeded with url: /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002013244BD00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+Traceback (most recent call last):
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\util\connection.py", line 96, in create_connection
+    raise err
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\util\connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1011, in _send_output
+    self.send(msg)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 951, in send
+    self.connect()
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x000002013244BD00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/Compuester/PycharmProjects/Django Course/TeslaSpectra/selenium/TeslaReddit.py", line 65, in rTeslaMotors
+    firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 422, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 421, in execute
+    return self._request(command_info[0], url, body=data)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 443, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\request.py", line 78, in request
+    return self.request_encode_body(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\util\retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=49639): Max retries exceeded with url: /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002013244BD00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002013244BD30>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b
+urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020131C19250>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b
+urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020131C19F40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b
+urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020131C19C40>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element
+urllib3.connectionpool - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020131C19760>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element
+urllib3.connectionpool - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020132453490>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element
+root - ERROR - HTTPConnectionPool(host='localhost', port=49639): Max retries exceeded with url: /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020132453580>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+Traceback (most recent call last):
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\util\connection.py", line 96, in create_connection
+    raise err
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\util\connection.py", line 86, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 699, in urlopen
+    httplib_response = self._make_request(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 394, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1256, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1302, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1251, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 1011, in _send_output
+    self.send(msg)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\http\client.py", line 951, in send
+    self.connect()
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000020132453580>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:/Users/Compuester/PycharmProjects/Django Course/TeslaSpectra/selenium/TeslaReddit.py", line 65, in rTeslaMotors
+    firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 1244, in find_element
+    return self.execute(Command.FIND_ELEMENT, {
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 422, in execute
+    response = self.command_executor.execute(driver_command, params)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 421, in execute
+    return self._request(command_info[0], url, body=data)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\selenium\webdriver\remote\remote_connection.py", line 443, in _request
+    resp = self._conn.request(method, url, body=body, headers=headers)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\request.py", line 78, in request
+    return self.request_encode_body(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 783, in urlopen
+    return self.urlopen(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\connectionpool.py", line 755, in urlopen
+    retries = retries.increment(
+  File "C:\Users\Compuester\anaconda3\envs\selenium\lib\site-packages\urllib3\util\retry.py", line 574, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=49639): Max retries exceeded with url: /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020132453580>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020131C19D00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b
