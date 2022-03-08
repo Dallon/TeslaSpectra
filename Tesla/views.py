@@ -5,14 +5,14 @@ import boto3
 from Tesla import settings
 
 #create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id,
-                  aws_secret_access_key=settings.aws_secret_access_key)
+s3 = boto3.client('s3', aws_access_key_id=settings.S3_access_key_id,
+                  aws_secret_access_key=settings.S3_secret_access_key)
 
 
 def HomePage(request):
     # create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
-    s3 = boto3.client('s3', aws_access_key_id=settings.aws_access_key_id,
-                      aws_secret_access_key=settings.aws_secret_access_key)
+    s3 = boto3.client('s3', aws_access_key_id=settings.S3_access_key_id,
+                      aws_secret_access_key=settings.S3_secret_access_key)
     with open("selenium/json/modelSCurrentPrices.json", "wb") as readfile:
         s3.download_fileobj("teslaspectrajson", "modelSCurrentPrices.json", readfile)
     with open('selenium/json/modelSCurrentPrices.json', 'r') as f:
