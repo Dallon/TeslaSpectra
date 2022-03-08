@@ -17,3 +17,5 @@ selenium/test.jpg
 *.log
 selenium/logs/secretkeys.py
 selenium/test.py
+/config/
+config/gunicorn/dev.py
