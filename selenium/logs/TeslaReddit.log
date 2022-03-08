@@ -623,3 +623,15 @@ Traceback (most recent call last):
     raise MaxRetryError(_pool, url, error or ResponseError(cause))
 urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='localhost', port=49639): Max retries exceeded with url: /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b/element (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020132453580>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
 urllib3.connectionpool - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020131C19D00>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it')': /session/aeec2b65-8ebd-48b0-abc8-5b409aed751b
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 109
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
