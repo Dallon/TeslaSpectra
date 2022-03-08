@@ -1,5 +1,5 @@
 """
-WSGI config for simplesocial project.
+WSGI config for teslaspectra project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
