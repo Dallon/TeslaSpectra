@@ -27,9 +27,9 @@
 
 0 */1 * * * /opt/bitnami/python/bin/python /home/bitnami/htdocs/projects/TeslaSpectra/selenium/Patent_App_check.py >> /home/bitnami/logs/patentappcheck.log 2>&1
 
-#TeslaReddit.py runs every 10 minutes
+#TeslaReddit.py runs every 25 minutes
 
-*/4 * * * * /opt/bitnami/python/bin/python /home/bitnami/htdocs/projects/TeslaSpectra/selenium/TeslaReddit.py >> /home/bitnami/logs/teslareddit.log 2>&1
+*/25 * * * * /opt/bitnami/python/bin/python /home/bitnami/htdocs/projects/TeslaSpectra/selenium/TeslaReddit.py >> /home/bitnami/logs/teslareddit.log 2>&1
 
 #pricechecks.py runs every hour at the 30 minute mark
 30 */1 * * * /opt/bitnami/python/bin/python /home/bitnami/htdocs/projects/TeslaSpectra/selenium/Patent_App_check.py >> /home/bitnami/logs/pricechecks.log 2>&1
