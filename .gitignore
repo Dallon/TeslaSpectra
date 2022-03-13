@@ -1,5 +1,5 @@
-Tesla/__pycache__/selenium/test.py
-Tesla/__pycache__/selenium/TeslaDB Create.py
+teslaspectra/__pycache__/selenium/test.py
+teslaspectra/__pycache__/selenium/TeslaDB Create.py
 *.pyc
 Datetimer.py
 .idea/.name
@@ -11,7 +11,7 @@ selenium/logs/TeslaReddit.log
 *.json
 selenium/geckodriver-v0.30.0-linux64.tar.gz
 selenium/test.py
-Tesla/settings.py
+teslaspectra/settings.py
 selenium/Patent_App_check_windows.py
 selenium/test.jpg
 *.log

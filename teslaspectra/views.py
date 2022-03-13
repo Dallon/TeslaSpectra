@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from django.shortcuts import render
 import json
 import boto3
-from Tesla import settings
+from teslaspectra import settings
 
 #create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
 s3 = boto3.client('s3', aws_access_key_id=settings.S3_access_key_id,
