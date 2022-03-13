@@ -7,13 +7,14 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
-# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+opts = Options()
+options.log.level = "trace"
 import json
 import logging
 import os
 import boto3
 from logs import secretkeys
-
 #Convert relative to absolute paths to avoid conflict in crontab
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
@@ -28,10 +29,14 @@ logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
 
 dateTimeObj = datetime.now()
 driver = GeckoDriverManager().install()
-print("did we get here?)")
+print("driver has been assigned to GeckoDriverManager().install()")
 s = Service(driver)
+
 driver = webdriver.Firefox(service=s, options=options)
-print("did we get here?)")
+
+print("webdriver loaded")
+
+
 
 def rTeslaMotors():
     logging.info("process started-------------------------------------------------------------")
