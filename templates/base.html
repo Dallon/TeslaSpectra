@@ -16,7 +16,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-    <link rel="stylesheet" href="{% static 'Tesla/css/master.css'%}">
+    <link rel="stylesheet" href="{% static '/css/master.css'%}">
   </head>
   <body>
     <nav class ="navbar navbar-expand-md navbar-dark fixed-top" role="navigation" id="navbar">
@@ -41,8 +41,7 @@
     {% block content %}
     {% endblock %}
 </div>
-  <script src="/static/js/teslaspectra.js"></script>
-
+  <script src="static/js/teslaspectra.js"></script>
 </body>
 <canvas id="canvas"></canvas>
 
