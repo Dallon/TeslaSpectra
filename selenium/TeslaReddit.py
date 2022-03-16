@@ -8,7 +8,6 @@ from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
 options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
-opts = Options()
 options.log.level = "trace"
 import json
 import logging
@@ -24,17 +23,15 @@ script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
                   aws_secret_access_key=secretkeys.aws_secret_access_key)
 
-logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename=script_dir + '/logs/TeslaReddit.log', level=logging.INFO)
-
 dateTimeObj = datetime.now()
 driver = GeckoDriverManager().install()
-print("driver has been assigned to GeckoDriverManager().install()")
+# print("driver has been assigned to GeckoDriverManager().install()")
+
 s = Service(driver)
 
 driver = webdriver.Firefox(service=s, options=options)
 
-print("webdriver loaded")
+# print("webdriver loaded")
 
 
 
@@ -46,7 +43,7 @@ def rTeslaMotors():
         "div[@data-testid='post-container']//a[@data-click-id='timestamp']").text
     splitString = postTimeStamp.split()
     postTimeStamp = splitString
-    print("Confirm scaper works by taking first listed post's timestamp and displaying it:" + str(splitString))
+    # print("Confirm scaper works by taking first listed post's timestamp and displaying it:" + str(splitString))
 
     """The while loop below checks for the presence of 'days', 'months' etc in the timestamp of the 1st post, 
     re-assigning the variable firstPostTimeStamp to the next timestamp xpath if 'days' is found.
@@ -61,7 +58,7 @@ def rTeslaMotors():
             postTimeStamp = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
     "div[@data-testid='post-container']//a[@data-click-id='timestamp'])[{}]".format(postNumber)).text
             postTimeStamp = postTimeStamp.split()
-            print("The #{} post's timestamp is:".format(postNumber) + str(postTimeStamp))
+            # print("The #{} post's timestamp is:".format(postNumber) + str(postTimeStamp))
 
         else:
         # Because PostNumber represents the index number of the post we can use it to gather
@@ -69,8 +66,8 @@ def rTeslaMotors():
             try:
                 firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
                  "div[@data-testid='post-container']//h3)[{}]".format(postNumber)).text
-                print("the #{} post timestamp contains {}"
-    " making it the first hot post of the day".format(postNumber,postTimeStamp[1]))
+                # print("the #{} post timestamp contains {}"
+    # " making it the first hot post of the day".format(postNumber,postTimeStamp[1]))
                 print("The first hot post Title is: {}".format(firstPostTitle))
                 logging.info("The Title was logged")
                 firstPostUpvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
@@ -102,11 +99,11 @@ def rTeslaMotors():
 
                 with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
                     json.dump(TeslaMotors, outfile)
-                print("r/TeslaMotors local JSON populated")
+                # print("r/TeslaMotors local JSON populated")
                 logging.info("r/TeslaMotors local JSON populated")
                 with open(script_dir + "/json/rTeslaMotors.json", "rb") as f:
                     s3.upload_fileobj(f, "teslaspectrajson", "rTeslaMotors.json")
-                print("r/TeslaMotors S3 JSON populated")
+                # print("r/TeslaMotors S3 JSON populated")
                 logging.info("r/TeslaMotors S3 JSON populated")
 
             except Exception as e:
@@ -115,6 +112,7 @@ def rTeslaMotors():
             finally:
                 driver.quit()
                 print("driver quit")
+                logging.info("driver.quit")
                 break #due to while true loop if we don't break the program doesn't end
 
 rTeslaMotors()
