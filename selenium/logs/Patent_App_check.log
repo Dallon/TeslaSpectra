@@ -44,3 +44,15 @@ root - INFO - the scraped title is {'patentTitle': 'ELECTRONIC ASSEMBLY', 'timeS
 root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
 root - INFO - There has been no new patent filing
 root - INFO - process completed-------------------------------------------------
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started--------------------------------------------
+root - INFO - the scraped title is {'patentTitle': 'ENERGY STORAGE CANOPY', 'timeScraped': '2022-03-13 16:58:22.154822'}
+root - INFO - the archived patent title is: ELECTRONIC ASSEMBLY
+root - INFO - there has been a new patent filing!
+root - INFO - Teslas most recent patent filing:{'patent': 'ENERGY STORAGE CANOPY', 'filing date': 'March 10, 2022', 'abstract': 'An energy storage canopy associated with a local building is provided. The energy storage canopy includes support members that can support compartments, which may be integral with or removable from the energy storage canopy. Each compartment includes a plurality of high capacity batteries to store electrical energy, at least one power conditioner to allow coupling high capacity batteries to an external unit. The external unit may be a power grid, a building, other loads, or the like.', 'scraped_at': '2022-03-13 16:58:14.124666'}
+root - INFO - process completed-------------------------------------------------

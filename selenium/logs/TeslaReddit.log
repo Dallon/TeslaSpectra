@@ -635,3 +635,38 @@ root - INFO - upvotes logged as 109
 root - INFO - scraped data logged
 root - INFO - r/TeslaMotors local JSON populated
 root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Getting latest mozilla release info for v0.30.0
+WDM - INFO - Trying to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-win64.zip
+WDM - INFO - Driver has been saved in cache [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0]
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Driver [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0\geckodriver.exe] found in cache
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 1100
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+WDM - INFO - 
+
+WDM - INFO - ====== WebDriver manager ======
+WDM - INFO - Current firefox version is 96.0
+WDM - INFO - Get LATEST geckodriver version for 96.0 firefox
+WDM - INFO - Getting latest mozilla release info for v0.30.0
+WDM - INFO - Trying to download new driver from https://github.com/mozilla/geckodriver/releases/download/v0.30.0/geckodriver-v0.30.0-win64.zip
+WDM - INFO - Driver has been saved in cache [C:\Users\Compuester\.wdm\drivers\geckodriver\win64\v0.30.0]
+root - INFO - process started-------------------------------------------------------------
+root - INFO - The Title was logged
+root - INFO - upvotes logged as 891
+root - INFO - scraped data logged
+root - INFO - r/TeslaMotors local JSON populated
+root - INFO - r/TeslaMotors S3 JSON populated
+root - INFO - driver.quit
