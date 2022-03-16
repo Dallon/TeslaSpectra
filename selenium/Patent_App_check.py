@@ -1,5 +1,4 @@
 # Importing libraries
-from cffi.setuptools_ext import execfile
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from webdriver_manager.firefox import GeckoDriverManager
@@ -9,7 +8,7 @@ from selenium.webdriver.firefox.service import Service
 
 options = Options()
 options.headless = True
-# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
 import os, json
 from datetime import datetime
 import logging
@@ -20,8 +19,6 @@ from logs import secretkeys
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
-logging.basicConfig(format="%(name)s - %(levelname)s - %(message)s",
-                    filename=script_dir + '/logs/Patent_App_check.log', level=logging.INFO)
 dateTimeObj = datetime.now()
 
 # create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
@@ -35,18 +32,17 @@ title of the most recent patent application name
 s = Service(GeckoDriverManager().install())
 driver = webdriver.Firefox(service=s, options=options)
 
+
 def checkPatent():
     website = 'https://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=0&f=S&l=50&TERM1=Tesla%2C+Inc&FIELD1=&co1=AND&TERM2=&FIELD2=&d=PG01'
 
     driver.get(website)
     scrapedPatentTitle = driver.find_element(By.XPATH, '//tr[2]/td[3]').text
     datetimeObj = datetime.now()
-    logging.info("process started--------------------------------------------")
     patentTitle = {
                 'patentTitle': scrapedPatentTitle,
                 'timeScraped': str(datetimeObj)}
-    print("the scraped title is {}".format(patentTitle))
-    logging.info("the scraped title is {}".format(patentTitle))
+    # print("the scraped title is {}".format(patentTitle))
     referencePatentName = '/json/storedpatentname.json'
 
     if os.stat(script_dir + referencePatentName).st_size == 0:
@@ -56,22 +52,17 @@ def checkPatent():
         with open(script_dir + "/json/storedpatentname.json", "rb") as f:
             s3.upload_fileobj(f, "teslaspectrajson", "storedpatentname.json")
 
-            logging.info("storepatentname file was empty, populating with latest scrape")
-
     else:
         with open(script_dir + '/json/storedpatentname.json', 'r') as readfile:
             archivedPatent = json.load(readfile)
 
-        print(archivedPatent["patentTitle"])
-        logging.info("the archived patent title is: {}".format(archivedPatent["patentTitle"]))
+        # print(archivedPatent["patentTitle"])
 
         if scrapedPatentTitle == archivedPatent["patentTitle"]:
             print("There has been no new patent filing")
-            logging.info("There has been no new patent filing")
 
         else:
             print("there has been a new patent filing!!")
-            logging.info("there has been a new patent filing!")
             #patent check will do all the work for us including appending to the newpatent.json file
             try:
                 driver.get(website)
@@ -88,8 +79,6 @@ def checkPatent():
                                'abstract': abstract,
                                'scraped_at': str(dateTimeObj)}
 
-                logging.info("Teslas most recent patent filing:{}".format(patentEntry))
-
                 with open(script_dir + '/json/newpatent.json', 'w') as outfile:
                     json.dump(patentEntry, outfile)
 
@@ -103,10 +92,10 @@ def checkPatent():
                     s3.upload_fileobj(f, "teslaspectrajson", "storedpatentname.json")
             except Exception as e:
                 print(e)
-                logging.exception(e)
 
             finally:
-                driver.close()
+                driver.quit()
+                print(driver.quit)
 
 checkPatent()
 logging.info("process completed-------------------------------------------------")
