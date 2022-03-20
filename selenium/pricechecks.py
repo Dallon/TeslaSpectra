@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from datetime import datetime
 import os
+import time
 import json
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
@@ -30,9 +31,10 @@ s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
 
 
 def price_update():
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=s, options=chrome_options)
     try:
         driver.get(website)
+        time.sleep(3)
         ModelS = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS12-Model')]//"
                                                "p[contains(@class, 'price-not-included')]").text
         ModelSPlaid = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS11-Model')]//"
@@ -79,10 +81,10 @@ def price_update():
             histPriceModelSPlaid = sorted_dicts[-1]['Model_S_Plaid']
 
             if ModelS == histPriceModelS and ModelSPlaid == histPriceModelSPlaid:
-                # print("prices haven't changed")
+                print("prices haven't changed")
                 pass
             else:
-                # print("prices have changed--- logging changes")
+                print("prices have changed--- logging changes")
                 with open(script_dir + "/json/modelSCurrentPrices.json", "w") as outfile:
                     json.dump(prices, outfile)
                     print("current price json updated")
@@ -97,7 +99,7 @@ def price_update():
 
                 with open(script_dir + '/json/modelSHistoricalPrices.json', 'rb') as f:
                     s3.upload_fileobj(f, "teslaspectrajson", "modelSHistoricalPrices.json")
-                    # print("historical prices json updated")
+                    print("historical prices json updated")
 
     except Exception as e:
         print(e)
