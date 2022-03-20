@@ -5,7 +5,6 @@ from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
-
 options = Options()
 options.headless = True
 options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
@@ -35,7 +34,6 @@ driver = webdriver.Firefox(service=s, options=options)
 
 def checkPatent():
     website = 'https://appft.uspto.gov/netacgi/nph-Parser?Sect1=PTO2&Sect2=HITOFF&p=1&u=%2Fnetahtml%2FPTO%2Fsearch-bool.html&r=0&f=S&l=50&TERM1=Tesla%2C+Inc&FIELD1=&co1=AND&TERM2=&FIELD2=&d=PG01'
-
     driver.get(website)
     scrapedPatentTitle = driver.find_element(By.XPATH, '//tr[2]/td[3]').text
     datetimeObj = datetime.now()
@@ -68,7 +66,6 @@ def checkPatent():
                 driver.get(website)
                 top_patent_title = driver.find_element(By.XPATH, '//tr[2]/td[3]').text
                 print("Tesla's most recent patent filing: {}".format(top_patent_title))
-
                 link = driver.find_element(By.XPATH, '//tr[2]/td[3]/a')
                 link.click()
                 date_filed = driver.find_element(By.XPATH, '//table/tbody/tr[3]/td[2]/b').text
@@ -82,20 +79,25 @@ def checkPatent():
                 with open(script_dir + '/json/newpatent.json', 'w') as outfile:
                     json.dump(patentEntry, outfile)
 
+
                 with open(script_dir + "/json/newpatent.json", "rb") as f:
                     s3.upload_fileobj(f, "teslaspectrajson", "newpatent.json")
+
 
                 with open(script_dir + '/json/storedpatentname.json', 'w') as outfile:
                     json.dump(patentTitle, outfile)
 
                 with open(script_dir + "/json/storedpatentname.json", "rb") as f:
                     s3.upload_fileobj(f, "teslaspectrajson", "storedpatentname.json")
+                    print("got to end of script")
+
             except Exception as e:
                 print(e)
 
             finally:
                 driver.quit()
-                print(driver.quit)
+                print("driver quit")
+
 
 checkPatent()
 logging.info("process completed-------------------------------------------------")
