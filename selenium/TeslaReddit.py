@@ -70,28 +70,31 @@ def rTeslaMotors():
     # " making it the first hot post of the day".format(postNumber,postTimeStamp[1]))
                 print("The first hot post Title is: {}".format(firstPostTitle))
                 logging.info("The Title was logged")
-                firstPostUpvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+                Upvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
                  "div[@data-testid='post-container'])[{}]//div[contains(@id, 'vote-arrows')]".format(postNumber)).text
-                print("The upvotes were sucessfully scraped at: {}".format(firstPostUpvotes))
+                print("The upvotes were sucessfully scraped at: {}".format(Upvotes))
 
                 #the if statement below allows us to view the upvotes as a number.
-                if "." in firstPostUpvotes:
-                    firstPostUpvotes = firstPostUpvotes.replace("k", "00").replace(".", "")
+                if "." in Upvotes:
+                    Upvotes = Upvotes.replace("k", "00").replace(".", "")
 
                 #if there are no votes, the votes placeholder says Vote. we need to change that
                 #to avoid an error.
-                if firstPostUpvotes == 'Vote':
-                    firstPostUpvotes = 0
+                if Upvotes == 'Vote':
+                    Upvotes = 0
 
-                logging.info("upvotes logged as {}".format(firstPostUpvotes))
-
-                if int(firstPostUpvotes) > 500:
+                logging.info("upvotes logged as {}".format(Upvotes))
+                if 100 < int(Upvotes) <= 1000:
+                    storedUpvotes = "{}00+".format(str(Upvotes)[0])
+                elif int(Upvotes) > 1000:
                     hotPost = 'Super Hot'
+                    storedUpvotes = "{}{}00+".format(str(Upvotes)[0], str(Upvotes)[1])
                 else:
+                    storedUpvotes = "{}0+".format(str(Upvotes)[0])
                     hotPost = ''
 
                 TeslaMotors = {'postTitle': firstPostTitle,
-                             'postUpvotes': firstPostUpvotes,
+                             'postUpvotes': storedUpvotes,
                              'hotPost': hotPost,
                              'scraped_at': str(dateTimeObj)}
 
