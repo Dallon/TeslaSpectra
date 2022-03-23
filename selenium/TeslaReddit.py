@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
-options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
 options.log.level = "trace"
 import json
 import logging
@@ -18,7 +18,6 @@ from logs import secretkeys
 script_path = os.path.abspath(__file__) # i.e. /path/to/selenium/script.py
 script_dir = os.path.split(script_path)[0] #i.e. /path/to/selenium/
 
-
 #create  a connection to S3 using boto3 and the AWS access keys hidden in settings.py
 s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
                   aws_secret_access_key=secretkeys.aws_secret_access_key)
@@ -26,17 +25,12 @@ s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
 dateTimeObj = datetime.now()
 driver = GeckoDriverManager().install()
 # print("driver has been assigned to GeckoDriverManager().install()")
-
 s = Service(driver)
-
 driver = webdriver.Firefox(service=s, options=options)
-
 # print("webdriver loaded")
 
 
-
 def rTeslaMotors():
-    logging.info("process started-------------------------------------------------------------")
     website = 'http://www.reddit.com/r/teslamotors'
     driver.get(website)
     postTimeStamp = driver.find_element(By.XPATH, "//div[contains(@class, 'rpBJOH')]//"
@@ -52,8 +46,7 @@ def rTeslaMotors():
      the first 'Hot Post' of the past 24 hours"""
     postNumber = 0
     while True:
-        if postTimeStamp[1] == 'days' or postTimeStamp[1] == 'day' \
-                or postTimeStamp[1] == 'month' or postTimeStamp[1] == 'months':
+        if postTimeStamp[1] != 'hours':
             postNumber = postNumber + 1
             postTimeStamp = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
     "div[@data-testid='post-container']//a[@data-click-id='timestamp'])[{}]".format(postNumber)).text
@@ -68,11 +61,15 @@ def rTeslaMotors():
                  "div[@data-testid='post-container']//h3)[{}]".format(postNumber)).text
                 # print("the #{} post timestamp contains {}"
     # " making it the first hot post of the day".format(postNumber,postTimeStamp[1]))
+
                 print("The first hot post Title is: {}".format(firstPostTitle))
-                logging.info("The Title was logged")
                 Upvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
                  "div[@data-testid='post-container'])[{}]//div[contains(@id, 'vote-arrows')]".format(postNumber)).text
                 print("The upvotes were sucessfully scraped at: {}".format(Upvotes))
+                postlink = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
+                "div[@data-testid='post-container'])[{}]//a[@data-click-id='body']".format(
+                    postNumber)).get_attribute("href")
+
 
                 #the if statement below allows us to view the upvotes as a number.
                 if "." in Upvotes:
@@ -83,25 +80,25 @@ def rTeslaMotors():
                 if Upvotes == 'Vote':
                     Upvotes = 0
 
-                logging.info("upvotes logged as {}".format(Upvotes))
                 if 100 < int(Upvotes) <= 1000:
                     storedUpvotes = "{}00+".format(str(Upvotes)[0])
+                    hotPost = ''
                 elif int(Upvotes) > 1000:
-                    hotPost = 'Super Hot'
+                    hotPost = 'Hot'
                     storedUpvotes = "{}{}00+".format(str(Upvotes)[0], str(Upvotes)[1])
                 else:
                     storedUpvotes = "{}0+".format(str(Upvotes)[0])
                     hotPost = ''
 
-                TeslaMotors = {'postTitle': firstPostTitle,
+                newscraped = {'postTitle': firstPostTitle,
                              'postUpvotes': storedUpvotes,
                              'hotPost': hotPost,
-                             'scraped_at': str(dateTimeObj)}
+                             'scraped_at': str(dateTimeObj),
+                              "postLink":[postlink]}
 
-                logging.info("scraped data logged")
 
                 with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
-                    json.dump(TeslaMotors, outfile)
+                    json.dump(newscraped, outfile)
                 # print("r/TeslaMotors local JSON populated")
                 logging.info("r/TeslaMotors local JSON populated")
                 with open(script_dir + "/json/rTeslaMotors.json", "rb") as f:
