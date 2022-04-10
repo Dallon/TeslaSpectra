@@ -17,12 +17,12 @@
 <div class ="jumbotron">
   <header>
 <textarea style="display:none;">hotornot = {{rTeslaMotors|get_item:"hotPost"}}</textarea>
-    {% if hotornot == '' %}
-    <h1>Today's hottest post on r/TeslaMotors</h1>
+    {% if not hotornot %}
+      <h1><a href="{{rTeslaMotors.postLink}}" target="_blank">Today's hottest post on r/TeslaMotors</a></h1>
     {% else %}
-    <h1>Today's hottest post on r/TeslaMotors<img src="/static/media/fire.png"></h1>
+     <h1><a href="{{rTeslaMotors.postLink}}"target="_blank">Today's hottest post on r/TeslaMotors<img src="/static/media/fire.png"></a></h1>
+      {% endif %}
 
-    {% endif %}
 </header>
   <h2>{{rTeslaMotors|get_item:"postTitle"}}</h2>
   <h3>{{rTeslaMotors|get_item:"postUpvotes"}} Upvotes</h3>
