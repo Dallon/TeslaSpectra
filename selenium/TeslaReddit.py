@@ -39,11 +39,10 @@ def rTeslaMotors():
     postTimeStamp = splitString
     # print("Confirm scaper works by taking first listed post's timestamp and displaying it:" + str(splitString))
 
-    """The while loop below checks for the presence of 'days', 'months' etc in the timestamp of the 1st post, 
-    re-assigning the variable firstPostTimeStamp to the next timestamp xpath if 'days' is found.
-     Then checking if there is 'days', 'months' etc on the new xpath, and if so it continues reassigning the 
-     variable until there is no longer 'days' etc in the timestamp. Then we know we've reached 
-     the most upvoted OR the first pinned post of the past 24 hours"""
+    """The while loop below checks for the presence of 'hours' in the timestamp of the 1st post, 
+    re-assigning the variable firstPostTimeStamp to the next timestamp xpath if 'hours' is not found. if hours not found
+     it continues reassigning the variable until there is 'hours' in the timestamp. Then we know we've 
+    reached the most upvoted OR the first pinned post of the past 24 hours"""
     postNumber = 0
     while True:
         if postTimeStamp[1] != 'hours':
