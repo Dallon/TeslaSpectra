@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.firefox.options import Options
 options = Options()
 options.headless = True
-# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
 options.log.level = "trace"
 import json
 import logging
@@ -43,7 +43,7 @@ def rTeslaMotors():
     re-assigning the variable firstPostTimeStamp to the next timestamp xpath if 'days' is found.
      Then checking if there is 'days', 'months' etc on the new xpath, and if so it continues reassigning the 
      variable until there is no longer 'days' etc in the timestamp. Then we know we've reached 
-     the first 'Hot Post' of the past 24 hours"""
+     the most upvoted OR the first pinned post of the past 24 hours"""
     postNumber = 0
     while True:
         if postTimeStamp[1] != 'hours':
@@ -52,7 +52,6 @@ def rTeslaMotors():
     "div[@data-testid='post-container']//a[@data-click-id='timestamp'])[{}]".format(postNumber)).text
             postTimeStamp = postTimeStamp.split()
             # print("The #{} post's timestamp is:".format(postNumber) + str(postTimeStamp))
-
         else:
         # Because PostNumber represents the index number of the post we can use it to gather
         # the relevant post data
@@ -70,7 +69,6 @@ def rTeslaMotors():
                 "div[@data-testid='post-container'])[{}]//a[@data-click-id='body']".format(
                     postNumber)).get_attribute("href")
 
-
                 #the if statement below allows us to view the upvotes as a number.
                 if "." in Upvotes:
                     Upvotes = Upvotes.replace("k", "00").replace(".", "")
@@ -84,8 +82,10 @@ def rTeslaMotors():
                     storedUpvotes = "{}00+".format(str(Upvotes)[0])
                     hotPost = ''
                 elif int(Upvotes) > 1000:
-                    hotPost = 'Hot'
+                    hotPost = ''
                     storedUpvotes = "{}{}00+".format(str(Upvotes)[0], str(Upvotes)[1])
+                elif int(Upvotes) > 4000:
+                    hotpost = 'Hot'
                 else:
                     storedUpvotes = "{}0+".format(str(Upvotes)[0])
                     hotPost = ''
@@ -94,7 +94,7 @@ def rTeslaMotors():
                              'postUpvotes': storedUpvotes,
                              'hotPost': hotPost,
                              'scraped_at': str(dateTimeObj),
-                              "postLink":[postlink]}
+                              "postLink":postlink}
 
 
                 with open(script_dir + '/json/rTeslaMotors.json', 'w') as outfile:
