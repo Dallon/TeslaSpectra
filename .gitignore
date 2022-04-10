@@ -19,3 +19,4 @@ selenium/logs/secretkeys.py
 selenium/test.py
 /config/
 config/gunicorn/dev.py
+selenium/json/newpatent.json
