@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
 {% block content %}
-<h1>Welcome to TeslaSpectra!</h1>
+<h1 class = "metaltitle">Welcome to TeslaSpectra!</h1>
 <div class="jumbotron">
   <h2>The current price of a Model S is ${{ present_data|get_item:"Model_S" }}</h2>
   <h2>The current price of a Model S Plaid is ${{present_data|get_item:"Model_S_Plaid"}}</h2>
 </div>
 
 <div class = "jumbotron">
-  <h1>Tesla's most recent patent filing</h1>
+  <h1><a href="{{recentPatent.link}}" target="_blank">Tesla's most recent patent filing</a></h1>
   <h2> {{recentPatent|get_item:"patent"}}</h2>
   <h3>filed on: {{recentPatent|get_item:"filing date"}}</h3>
   <h4>Abstract</h4>
