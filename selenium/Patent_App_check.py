@@ -68,13 +68,15 @@ def checkPatent():
                 print("Tesla's most recent patent filing: {}".format(top_patent_title))
                 link = driver.find_element(By.XPATH, '//tr[2]/td[3]/a')
                 link.click()
+                patenturl = driver.current_url
                 date_filed = driver.find_element(By.XPATH, '//table/tbody/tr[3]/td[2]/b').text
                 abstract = driver.find_element(By.XPATH, '//body[@bgcolor="#FFFFFF"]/p[2]').text
 
                 patentEntry = {'patent': top_patent_title,
                                'filing date': date_filed,
                                'abstract': abstract,
-                               'scraped_at': str(dateTimeObj)}
+                               'scraped_at': str(dateTimeObj),
+                                'link':patenturl}
 
                 with open(script_dir + '/json/newpatent.json', 'w') as outfile:
                     json.dump(patentEntry, outfile)
