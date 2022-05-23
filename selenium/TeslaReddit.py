@@ -83,7 +83,7 @@ def rTeslaMotors():
                 elif int(Upvotes) > 1000:
                     hotPost = ''
                     storedUpvotes = "{}{}00+".format(str(Upvotes)[0], str(Upvotes)[1])
-                elif int(Upvotes) > 4000:
+                elif int(Upvotes) > 1500:
                     hotpost = 'Hot'
                 else:
                     storedUpvotes = "{}0+".format(str(Upvotes)[0])
