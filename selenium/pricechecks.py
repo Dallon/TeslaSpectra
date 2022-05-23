@@ -35,10 +35,14 @@ def price_update():
     try:
         driver.get(website)
         time.sleep(3)
-        ModelS = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS12-Model')]//"
-                                               "p[contains(@class, 'price-not-included')]").text
-        ModelSPlaid = driver.find_element(By.XPATH, "//div[@id='root']//label[contains(@for, '$MTS11-Model')]//"
-                                                    "p[contains(@class, 'price-not-included')]").text
+        element = driver.find_element(By.XPATH, "/html/body/div[2]/div[1]/div[1]/dialog/div/button")
+        element.click()
+        time.sleep(1)
+        ModelS = driver.find_element(By.XPATH, "//div[@id='root']"
+                                    "//label[contains(@for, '$MTS13-Model')]//span[3]//p").text
+
+        ModelSPlaid = driver.find_element(By.XPATH, "//div[@id='root']"
+                                    "//label[contains(@for, '$MTS14-Model')]//span[3]//p").text
 
         # below we remove the commas and dollar signs from the Car model prices so we can later compare
         # the integer values to historical prices.
