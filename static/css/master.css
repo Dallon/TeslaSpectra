@@ -10,13 +10,14 @@
 }
 
 .metaltitle{
-  transition: translateY(-50%);
   font-family: 'Electrolize', sans-serif;
-  font-style: italic;
-  font-size:4em;
+  font-style: bold;
+  font-size:2em;
   text-transform: uppercase;
+  text-align: center;
+/*  transform: translate(10%, 10%);*/
   letter-spacing: 5px;
-  background:linear-gradient(#262626,#eaeaea,#262626);
+  background:linear-gradient(#e82127,#eaeaea,#e82127);
   -webkit-background-clip: text;
   color:transparent;
 /*font-family: 'Electrolize', sans-serif;
@@ -32,7 +33,16 @@ text-shadow: 2px 2px 2px #ababab;
     // dont forget "display", "height" and "width" attributes
 }
 
-
+#right-nav{
+font-size: 1em;
+text-align: right;
+}
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+}
 
 .turnBlue{
     color: blue;
@@ -40,8 +50,13 @@ text-shadow: 2px 2px 2px #ababab;
 
 .navbar-brand{
   margin-bottom: 1px;
+  margin-top: 4px;
 }
 
+h2{
+font-size:4em;
+text-align: center;
+}
 
 th{
   color: red;
@@ -94,5 +109,15 @@ header {
     }
 
 .navbar{
-     background-color: lightblue;
+
+ background-color: #F7F6FB;
 }
+.container{
+display: flex;
+}
+a:link{
+color: blue;
+}
+
+a:hover { text-decoration: none; }
+a:active { text-decoration: none; }
