@@ -24,14 +24,19 @@ def HomePage(request):
         s3.download_fileobj("teslaspectrajson", "newpatent.json", f)
     with open('selenium/json/newpatent.json', 'r') as patentdetails:
         newestPatentDetails = json.load(patentdetails)
-
+        #tesla motors s3 object writing to the local json file as well as setting variable values.
     with open("selenium/json/rTeslaMotors.json", "wb") as f:
         s3.download_fileobj("teslaspectrajson", "rTeslaMotors.json", f)
     with open('selenium/json/rTeslaMotors.json', 'r') as redditpost:
         teslareddit = json.load(redditpost)
 
+    with open('selenium/json/TheLimitingFactor.json', 'wb') as f:
+        s3.download_fileobj('teslaspectrajson', 'TheLimitingFactorS3.json', f)
+    with open('selenium/json/TheLimitingFactor.json', 'r') as thelimitingfactor:
+        thelimitingfactor = json.load(thelimitingfactor)
+
         return render(request, 'index.html', {'present_data': prices, 'recentPatent': newestPatentDetails,
-                                              'rTeslaMotors': teslareddit})
+                                              'rTeslaMotors': teslareddit, 'thelimitingfactor': thelimitingfactor})
 
 
 class TestPage(TemplateView):
