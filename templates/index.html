@@ -1,33 +1,37 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
 {% block content %}
-<h1 class = "metaltitle">Welcome to TeslaSpectra!</h1>
-<div class="jumbotron">
-  <h2>The current price of a Model S is ${{ present_data|get_item:"Model_S" }}</h2>
-  <h2>The current price of a Model S Plaid is ${{present_data|get_item:"Model_S_Plaid"}}</h2>
-</div>
+
+    <h5>Model S price:${{ present_data|get_item:"Model_S" }}, </h5>
+    <h5> Model S Plaid price:${{present_data|get_item:"Model_S_Plaid"}}</h5>
 
 <div class = "jumbotron">
-  <h1><a href="{{recentPatent.link}}" target="_blank">Tesla's most recent patent filing</a></h1>
-  <h2> {{recentPatent|get_item:"patent"}}</h2>
-  <h3>filed on: {{recentPatent|get_item:"filing date"}}</h3>
-  <h4>Abstract</h4>
-  <p>{{recentPatent|get_item:"abstract"}}</p>
+  <h2><a href="{{thelimitingfactor.videoLink}}" target="_blank">The Limiting Factor's Latest Youtube Video</a></h2>
+  <h3> {{thelimitingfactor|get_item:"videoTitle"}}</h3>
+
+    <p align="center"><iframe {{thelimitingfactor|get_item:"embedCode"}}></iframe></p>
+  <h4>{{thelimitingfactor|get_item:"videoViews"}}, posted {{thelimitingfactor|get_item:"videoPostDate"}}</h4>
 </div>
 <div class ="jumbotron">
-  <header>
+
 <textarea style="display:none;">hotornot = {{rTeslaMotors|get_item:"hotPost"}}</textarea>
     {% if not hotornot %}
-      <h1><a href="{{rTeslaMotors.postLink}}" target="_blank">Today's hottest post on r/TeslaMotors</a></h1>
+      <h2><a href="{{rTeslaMotors.postLink}}" target="_blank">Today's hottest post on r/TeslaMotors</a></h2>
     {% else %}
-     <h1><a href="{{rTeslaMotors.postLink}}"target="_blank">Today's hottest post on r/TeslaMotors<img src="/static/media/fire.png"></a></h1>
+     <h2><a href="{{rTeslaMotors.postLink}}"target="_blank">Today's hottest post on r/TeslaMotors<img src="/static/media/fire.png"></a></h2>
       {% endif %}
 
-</header>
-  <h2>{{rTeslaMotors|get_item:"postTitle"}}</h2>
-  <h3>{{rTeslaMotors|get_item:"postUpvotes"}} Upvotes</h3>
-
+  <h3>{{rTeslaMotors|get_item:"postTitle"}}</h3>
+  <h4>{{rTeslaMotors|get_item:"postUpvotes"}} Upvotes</h4>
 </div>
 
+
+<div class = "jumbotron">
+  <h2><a href="{{recentPatent.link}}" target="_blank">Tesla's most recent patent filing</a></h2>
+  <h3> {{recentPatent|get_item:"patent"}}</h3>
+  <h4>filed on: {{recentPatent|get_item:"filing date"}}</h4>
+  <h5>Abstract</h5>
+  <p>{{recentPatent|get_item:"abstract"}}</p>
+</div>
 
 {% endblock %}
