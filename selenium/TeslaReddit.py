@@ -33,10 +33,10 @@ driver = webdriver.Firefox(service=s, options=options)
 def rTeslaMotors():
     website = 'http://www.reddit.com/r/teslamotors'
     driver.get(website)
-    postTimeStamp = driver.find_element(By.XPATH, "//div[contains(@class, 'rpBJOH')]//"
-        "div[@data-testid='post-container']//a[@data-click-id='timestamp']").text
+    postTimeStamp = driver.find_element(By.XPATH, "//span[@data-testid = 'post_timestamp']").text
     splitString = postTimeStamp.split()
     postTimeStamp = splitString
+    liveEvent = "//div[contains(@class, 'rpBJOH')]//div[@data-testid='post-container']//following-sibling::span[text()='Live']"
     # print("Confirm scaper works by taking first listed post's timestamp and displaying it:" + str(splitString))
 
     """The while loop below checks for the presence of 'hours' in the timestamp of the 1st post, 
@@ -47,13 +47,13 @@ def rTeslaMotors():
     while True:
         if postTimeStamp[1] != 'hours':
             postNumber = postNumber + 1
-            postTimeStamp = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
-    "div[@data-testid='post-container']//a[@data-click-id='timestamp'])[{}]".format(postNumber)).text
+            postTimeStamp = driver.find_element(By.XPATH, "(//span[@data-testid = 'post_timestamp'])[{}]".format(postNumber)).text
             postTimeStamp = postTimeStamp.split()
             # print("The #{} post's timestamp is:".format(postNumber) + str(postTimeStamp))
         else:
         # Because PostNumber represents the index number of the post we can use it to gather
         # the relevant post data
+
             try:
                 firstPostTitle = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
                  "div[@data-testid='post-container']//h3)[{}]".format(postNumber)).text
@@ -64,9 +64,19 @@ def rTeslaMotors():
                 Upvotes = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
                  "div[@data-testid='post-container'])[{}]//div[contains(@id, 'vote-arrows')]".format(postNumber)).text
                 print("The upvotes were sucessfully scraped at: {}".format(Upvotes))
-                postlink = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//"
-                "div[@data-testid='post-container'])[{}]//a[@data-click-id='body']".format(
-                    postNumber)).get_attribute("href")
+
+                ## This section essentially checks if there is a live event. If there is a live event
+                ## then the script tries to find the link and fails because live event links aren't
+                ##in the same format as standard hot post links
+                postlink = driver.find_elements(By.XPATH, "(//div[contains(@class, 'rpBJOH')]"
+"//div[@data-testid='post-container'])[{}]//a[@data-click-id='body']".format(postNumber))
+                if postlink == True:
+                    postlink = driver.find_element(By.XPATH, "(//div[contains(@class, 'rpBJOH')]//div[@data-testid='post-container'])[{}]//a[@data-click-id='body']".format(postNumber)).get_attribute("href")
+                else:
+                    postlink = driver.find_element(By.XPATH, "//a[contains(@href, 'predictions')]").get_attribute("href")
+
+
+
 
                 #the if statement below allows us to view the upvotes as a number.
                 if "." in Upvotes:
@@ -108,9 +118,10 @@ def rTeslaMotors():
             except Exception as e:
                 print(e)
                 logging.exception(e)
+
             finally:
                 driver.quit()
-                print("driver quit")
+                # print("driver quit")
                 logging.info("driver.quit")
                 break #due to while true loop if we don't break the program doesn't end
 
