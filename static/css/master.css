@@ -3,20 +3,23 @@
 
 .logo{
     width: 100%;
-    max-width: 80px;
-    height: auto;
+    height: 100%;
+    max-width: 100px;
+    padding-top: 2px;
+    padding-left: 5px;
     margin-left: auto;
-    position: relative; top: -10px;
+   margin-top: -20px;
 }
 
-.metaltitle{
+h1.metaltitle{
   font-family: 'Electrolize', sans-serif;
+  margin-right: 0.5rem;
   font-style: bold;
-  font-size:2em;
+  font-size:3em;
   text-transform: uppercase;
-  text-align: center;
-/*  transform: translate(10%, 10%);*/
-  letter-spacing: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  transform: translate(10%, 10%);
   background:linear-gradient(#e82127,#eaeaea,#e82127);
   -webkit-background-clip: text;
   color:transparent;
@@ -37,9 +40,22 @@ text-shadow: 2px 2px 2px #ababab;
 font-size: 1em;
 text-align: right;
 }
+
+.nav{
+margin:0 auto;
+margin-left: 1rem;
+margin-right: 0.5rem;
+border-bottom: 1px solid $clr-gray200;
+min-width: 585px;
+background: #F9F9F9;
+border-radius: 0.3rem;
+
+}
 .jumbotron {
-  padding: 2rem 1rem;
+  padding: 1rem 1rem;
+  align: center;
   margin-bottom: 2rem;
+  margin-right: 1rem;
   background-color: #e9ecef;
   border-radius: .3rem;
 }
@@ -54,7 +70,7 @@ text-align: right;
 }
 
 h2{
-font-size:4em;
+font-size:2.5em;
 text-align: center;
 }
 
@@ -104,7 +120,7 @@ header {
 
 .nav a{
 
-    font-size: 2.8em;
+    font-size: 1.0em;
     position: relative; top: 20px;
     }
 
