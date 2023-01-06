@@ -3,19 +3,20 @@
 {% block content %}
 
     <h5>Model S price:${{ present_data|get_item:"Model_S" }}, </h5>
-    <h5> Model S Plaid price:${{present_data|get_item:"Model_S_Plaid"}}</h5>
+    <h5>Model S Plaid price:${{present_data|get_item:"Model_S_Plaid"}}</h5>
+<!--<div class="container">-->
+<!--<div class = "jumbotron">-->
+<!--  <h2><a href="{{thelimitingfactor.videoLink}}" target="_blank">The Limiting Factor's Latest Youtube Video</a></h2>-->
+<!--  <h3> {{thelimitingfactor|get_item:"videoTitle"}}</h3>-->
+<!--    <p align="center"><iframe {{thelimitingfactor|get_item:"embedCode"}}></iframe></p>-->
+<!--  <h4>{{thelimitingfactor|get_item:"videoViews"}}, posted {{thelimitingfactor|get_item:"videoPostDate"}}</h4>-->
+<!--</div>-->
+<!--</div>-->
 
-<div class = "jumbotron">
-  <h2><a href="{{thelimitingfactor.videoLink}}" target="_blank">The Limiting Factor's Latest Youtube Video</a></h2>
-  <h3> {{thelimitingfactor|get_item:"videoTitle"}}</h3>
-
-    <p align="center"><iframe {{thelimitingfactor|get_item:"embedCode"}}></iframe></p>
-  <h4>{{thelimitingfactor|get_item:"videoViews"}}, posted {{thelimitingfactor|get_item:"videoPostDate"}}</h4>
-</div>
 <div class ="jumbotron">
-
 <textarea style="display:none;">hotornot = {{rTeslaMotors|get_item:"hotPost"}}</textarea>
     {% if not hotornot %}
+
       <h2><a href="{{rTeslaMotors.postLink}}" target="_blank">Today's hottest post on r/TeslaMotors</a></h2>
     {% else %}
      <h2><a href="{{rTeslaMotors.postLink}}"target="_blank">Today's hottest post on r/TeslaMotors<img src="/static/media/fire.png"></a></h2>
@@ -26,13 +27,24 @@
 </div>
 
 
-<!--<div class = "jumbotron">-->
-<!--  <h2><a href="{{recentPatent.link}}" target="_blank">Tesla's most recent patent filing</a></h2>-->
-<!--  <h3> {{recentPatent|get_item:"patent"}}</h3>-->
-<!--  <h4>filed on: {{recentPatent|get_item:"filing date"}}</h4>-->
-<!--  <h5>Abstract</h5>-->
-<!--  <p>{{recentPatent|get_item:"abstract"}}</p>-->
-<!--</div>-->
+
+{% for i in "12345" %}
+  {% with patent_key="patent"|add:i %}
+  {% if patent_key in recentPatent %}
+    {% with pub_date_key="publishing date"|add:i %}
+    {% with abstract_key="abstract"|add:i %}
+      <div class = "jumbotron">
+        <h2><a href="{{recentPatent.link}}" target="_blank">Tesla's most recent patent filing</a></h2>
+        <h3> {{recentPatent|get_item:patent_key}}</h3>
+        <h4>filed on: {{recentPatent|get_item:pub_date_key}}</h4>
+        <h5>Abstract</h5>
+        <p>{{recentPatent|get_item:abstract_key}}</p>
+      </div>
+    {% endwith %}
+    {% endwith %}
+    {% endif %}
+    {% endwith %}
+    {% endfor %}
 
 
 {% endblock %}
