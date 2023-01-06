@@ -13,8 +13,8 @@ s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
                   aws_secret_access_key=secretkeys.aws_secret_access_key)
 
 
-#this function assumes you have already populated the json file with a list of dictionaries with
-#the same format as exampleList
+#this function assumes you have already populated the json file with a dictionary containing
+#scraped patent details
 def store_patent_info(driver, patentEntry):
 
     with open(script_dir + '/json/scrapedpatents.json', 'r') as readfile:
