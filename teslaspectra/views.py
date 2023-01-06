@@ -20,9 +20,9 @@ def HomePage(request):
         prices = json.load(f)
 
         #Render the context as 'context_data' taking in the python dictionary as the key.
-    with open("selenium/json/newpatent.json", "wb") as f:
-        s3.download_fileobj("teslaspectrajson", "newpatent.json", f)
-    with open('selenium/json/newpatent.json', 'r') as patentdetails:
+    with open("selenium/json/scrapedpatents.json", "wb") as f:
+        s3.download_fileobj("teslaspectrajson", "scrapedpatents.json", f)
+    with open('selenium/json/scrapedpatents.json', 'r') as patentdetails:
         newestPatentDetails = json.load(patentdetails)
         #tesla motors s3 object writing to the local json file as well as setting variable values.
     with open("selenium/json/rTeslaMotors.json", "wb") as f:
