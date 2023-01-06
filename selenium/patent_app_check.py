@@ -45,7 +45,6 @@ def checkPatent():
         #now that we have clicked search and made our empty dict
         # we can start initializing some patent web element variables
         store_patent_info(driver, patentEntry)
-        # print(patentsOfToday)
     except Exception as e:
         # print(e)
         # print("exception")
