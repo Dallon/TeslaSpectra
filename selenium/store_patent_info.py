@@ -3,6 +3,7 @@ import os
 import json
 import time
 import boto3
+import logging
 from logs import secretkeys
 #Convert relative to absolute paths to avoid conflict in crontab
 script_path = os.path.abspath(__file__)  # i.e. /path/to/selenium/script.py
@@ -15,6 +16,10 @@ s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
 
 #this function assumes you have already populated the json file with a dictionary containing
 #scraped patent details
+logging.basicConfig(filename='logs/patent_app_check.log', filemode='w',
+                    format='%(asctime)s - %(message)s', level=logging.INFO)
+
+
 def store_patent_info(driver, patentEntry):
 
     with open(script_dir + '/json/scrapedpatents.json', 'r') as readfile:
@@ -52,11 +57,12 @@ def store_patent_info(driver, patentEntry):
             patentEntry["abstract{}".format(i)] = patentAbstract
 
 
-
     with open(script_dir + '/json/scrapedpatents.json', 'w') as outfile:
         json.dump(patentEntry, outfile)
 
     with open(script_dir + "/json/scrapedpatents.json", "rb") as f:
         s3.upload_fileobj(f, "teslaspectrajson", "scrapedpatents.json")
-        print("new patent details uploaded to S3")
+        logging.info("new patent details uploaded to S3")
+
+    logging.info("end of helper function")
 
