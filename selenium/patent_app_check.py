@@ -9,9 +9,10 @@ from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
 from store_patent_info import store_patent_info
+from datetime import datetime
 options = Options()
-options.headless = False
-options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
+options.headless = True
+# options.binary = FirefoxBinary(r'/usr/bin/iceweasel')
 
 
 """ uses Selenium to go to the US Patent webpage search engine and scrape the
@@ -19,9 +20,11 @@ title of the most recent patent application name
 """
 s = Service(GeckoDriverManager().install())
 driver = webdriver.Firefox(service=s, options=options)
+logging.basicConfig(filename='logs/patent_app_check.log', filemode='w',
+                    format='%(asctime)s - %(message)s', level=logging.INFO)
 
 
-def checkPatent():
+def check_patent():
     try:
         website = 'https://ppubs.uspto.gov/pubwebapp/'
         driver.get(website)
@@ -39,7 +42,7 @@ def checkPatent():
         inputText.send_keys("Tesla, Inc"[::-1])
         searchButton = driver.find_element(By.ID, "search-btn-search")
         searchButton.click()
-        time.sleep(10)
+        time.sleep(5)
 
         patentEntry = {}
         #now that we have clicked search and made our empty dict
@@ -53,5 +56,4 @@ def checkPatent():
         logging.info("process completed-------------------------------------------------")
         driver.close()
         driver.quit()
-
-checkPatent()
+check_patent()
