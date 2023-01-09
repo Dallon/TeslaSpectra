@@ -54,6 +54,7 @@ def check_patent():
         logging.exception(e)
     finally:
         logging.info("process completed-------------------------------------------------")
-        driver.close()
-        driver.quit()
+        driver.quit() #closes ALL driver windows as opposed to just the one focused on.
+
+
 check_patent()
