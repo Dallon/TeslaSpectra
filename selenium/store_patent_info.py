@@ -24,6 +24,7 @@ def store_patent_info(driver, patentEntry):
 
     with open(script_dir + '/json/scrapedpatents.json', 'r') as readfile:
         archivedPatent = json.load(readfile)
+    newPatentScraped = False
     for i in range(1, 5):
         #in case there is more than one patent published in a day, iterate through the rows
         # in column 14 in the table shown, comparing the previously scraped title stored in
@@ -31,7 +32,7 @@ def store_patent_info(driver, patentEntry):
         patentTitle = driver.find_element(By.XPATH, "(//div[@data-cell=14])[{}]".format(i)).text
         # print(archivedPatent["patentTitle"])
         # print(archivedPatent["patent{}".format(i)])
-        # Check if patentTitle is already in archivedPatent
+        # Check if patentTitle just scraped is already in archivedPatent
         already_scraped = False
         for value in archivedPatent.values():
             if value == patentTitle:
@@ -55,14 +56,15 @@ def store_patent_info(driver, patentEntry):
             patentEntry["patent{}".format(i)] = patentTitle
             patentEntry["publishing date{}".format(i)] = patentPublishDate
             patentEntry["abstract{}".format(i)] = patentAbstract
+            newPatentScraped = True
 
+    if newPatentScraped:
+        with open(script_dir + '/json/scrapedpatents.json', 'w') as outfile:
+            json.dump(patentEntry, outfile)
 
-    with open(script_dir + '/json/scrapedpatents.json', 'w') as outfile:
-        json.dump(patentEntry, outfile)
-
-    with open(script_dir + "/json/scrapedpatents.json", "rb") as f:
-        s3.upload_fileobj(f, "teslaspectrajson", "scrapedpatents.json")
-        logging.info("new patent details uploaded to S3")
+        with open(script_dir + "/json/scrapedpatents.json", "rb") as f:
+            s3.upload_fileobj(f, "teslaspectrajson", "scrapedpatents.json")
+            logging.info("new patent details uploaded to S3")
 
     logging.info("end of helper function")
 
