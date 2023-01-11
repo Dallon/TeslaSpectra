@@ -2,49 +2,74 @@
 {% load custom_tags %}
 {% block content %}
 
+<div>
+    <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="{% url 'home' %}">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link " data-toggle="tab" href="{% url 'onyoutube' %}">On Youtube</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="{% url 'home' %}">Messages</a>
+    </li>
+  </ul>
+
+<---tab panes ---->
+
+<div class="tab-content">
+  <div id="home" class="container tab-pane active"><br>
+    <h3>Home</h3>
+  </div>
+  <div id="youtube" class="container tab-pane fade"><br>
+    <h3>Tesla On Youtube</h3>
+  </div>
+  <div id="messages" class="container tab-pane fade"><br>
+    <h3>Messages</h3>
+  </div>
+</div>
+</div>
+
     <h5>Model S price:${{ present_data|get_item:"Model_S" }}, </h5>
     <h5>Model S Plaid price:${{present_data|get_item:"Model_S_Plaid"}}</h5>
-<!--<div class="container">-->
-<!--<div class = "jumbotron">-->
-<!--  <h2><a href="{{thelimitingfactor.videoLink}}" target="_blank">The Limiting Factor's Latest Youtube Video</a></h2>-->
-<!--  <h3> {{thelimitingfactor|get_item:"videoTitle"}}</h3>-->
-<!--    <p align="center"><iframe {{thelimitingfactor|get_item:"embedCode"}}></iframe></p>-->
-<!--  <h4>{{thelimitingfactor|get_item:"videoViews"}}, posted {{thelimitingfactor|get_item:"videoPostDate"}}</h4>-->
-<!--</div>-->
-<!--</div>-->
+
+<div class="container">
+
+
 
 <div class ="jumbotron">
 <textarea style="display:none;">hotornot = {{rTeslaMotors|get_item:"hotPost"}}</textarea>
     {% if not hotornot %}
+      <h2><a href="{{rTeslaMotors.postLink}}" target="_blank">Today's hottest post for reddit on r/TeslaMotors</a></h2>
 
-      <h2><a href="{{rTeslaMotors.postLink}}" target="_blank">Today's hottest post on r/TeslaMotors</a></h2>
     {% else %}
-     <h2><a href="{{rTeslaMotors.postLink}}"target="_blank">Today's hottest post on r/TeslaMotors<img src="/static/media/fire.png"></a></h2>
+     <h2><a href="{{rTeslaMotors.postLink}}"target="_blank">Today's hottest post for reddit on r/TeslaMotors<img
+             src="/static/media/fire.png"></a></h2>
       {% endif %}
 
   <h3>{{rTeslaMotors|get_item:"postTitle"}}</h3>
   <h4>{{rTeslaMotors|get_item:"postUpvotes"}} Upvotes</h4>
 </div>
+</div>
 
 
-
-{% for i in "12345" %}
+{% for i in "1234" %}
   {% with patent_key="patent"|add:i %}
-  {% if patent_key in recentPatent %}
+  {% if patent_key in recent_patent %}
     {% with pub_date_key="publishing date"|add:i %}
     {% with abstract_key="abstract"|add:i %}
       <div class = "jumbotron">
-        <h2><a href="{{recentPatent.link}}" target="_blank">Tesla's most recent patent filing</a></h2>
-        <h3> {{recentPatent|get_item:patent_key}}</h3>
-        <h4>filed on: {{recentPatent|get_item:pub_date_key}}</h4>
+        <h2>Tesla's recent patent filing</h2>
+        <h3> {{recent_patent|get_item:patent_key}}</h3>
+        <h4>filed on: {{recent_patent|get_item:pub_date_key}}</h4>
         <h5>Abstract</h5>
-        <p>{{recentPatent|get_item:abstract_key}}</p>
+        <p>{{recent_patent|get_item:abstract_key}}</p>
       </div>
     {% endwith %}
     {% endwith %}
     {% endif %}
     {% endwith %}
     {% endfor %}
-
 
 {% endblock %}
