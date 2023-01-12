@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import json
 import boto3
 from teslaspectra import settings
@@ -11,43 +11,48 @@ s3 = boto3.client('s3', aws_access_key_id=settings.S3_access_key_id,
 
 def homepage(request):
    #pricecheck s3 objects
-    with open("selenium/json/modelSCurrentPrices.json", "wb") as readfile:
+    with open("scrapers/json/modelSCurrentPrices.json", "wb") as readfile:
         s3.download_fileobj("teslaspectrajson", "modelSCurrentPrices.json", readfile)
-    with open('selenium/json/modelSCurrentPrices.json', 'r') as f:
+    with open('scrapers/json/modelSCurrentPrices.json', 'r') as f:
         #json.load provides us with a python dictionary from the json file
         prices = json.load(f)
 
     #patent details s3 object- Render the context as 'context_data' taking in the python dictionary as the key.
-    with open("selenium/json/scrapedpatents.json", "wb") as f:
+    with open("scrapers/json/scrapedpatents.json", "wb") as f:
         s3.download_fileobj("teslaspectrajson", "scrapedpatents.json", f)
 
-    with open('selenium/json/scrapedpatents.json', 'r') as patentdetails:
+    with open('scrapers/json/scrapedpatents.json', 'r') as patentdetails:
         newestPatentDetails = json.load(patentdetails)
 
-    #tesla motors s3 object writing to the local json file as well as setting variable values.
-    with open("selenium/json/rTeslaMotors.json", "wb") as f:
-        s3.download_fileobj("teslaspectrajson", "rTeslaMotors.json", f)
-    with open('selenium/json/rTeslaMotors.json', 'r') as redditpost:
-        teslareddit = json.load(redditpost)
-
-    with open('selenium/json/.json', 'wb') as f:
-        s3.download_fileobj('teslaspectrajson', 'TheLimitingFactorS3.json', f)
-    with open('selenium/json/TheLimitingFactor.json', 'r') as thelimitingfactor:
-        thelimitingfactor = json.load(thelimitingfactor)
-
-        return render(request, 'index.html', {'present_data': prices, 'recent_patent': newestPatentDetails,
-                                              'rTeslaMotors': teslareddit})
+    return render(request, 'index.html', {'present_data': prices,
+                                              'recent_patent': newestPatentDetails
+                                              })
 
 
 def youtube_page(request):
-    with open('selenium/json/youtubeinfo.json', 'wb') as f:
+    with open('scrapers/json/youtubeinfo.json', 'wb') as f:
         s3.download_fileobj('teslaspectrajson', 'youtubeinfo.json', f)
-    with open('selenium/json/youtubeinfo.json', 'r') as youtube_videos_stored:
+    with open('scrapers/json/youtubeinfo.json', 'r') as youtube_videos_stored:
         youtube_videos = json.load(youtube_videos_stored)
-        channels = ["tesla_daily", "the_tesla_space", "the_limiting_factor"]
+        channels = ["Tesla Daily", "The Tesla Space", "The Limiting Factor"]
+
 
     return render(request, 'onyoutube.html', {'youtube_vids': youtube_videos, 'channels':channels
                                              })
+
+
+def reddit_page(request):
+    with open('scrapers/json/subreddits.json', 'wb') as f:
+        s3.download_fileobj('teslaspectrajson', 'subreddits.json', f)
+    with open('scrapers/json/subreddits.json', 'r') as subreddit_details:
+        subreddit_details = json.load(subreddit_details)
+        subreddits = ["TeslaMotors", "TeslaInvestorsClub", "Cybertruck", "RealTesla",
+                      "TeslaPorn"]
+
+    return render(request, 'onreddit.html', {'subreddit_details': subreddit_details, 'subreddits':subreddits
+                                             })
+
+
 
 
 class test_page(TemplateView):
@@ -59,17 +64,20 @@ class youtube_page_class(TemplateView):
 class thanks_page(TemplateView):
     template_name = 'thanks.html'
 
+class reddit_page_class(TemplateView):
+    template_name = 'onreddit.html'
+
 
 def model_s_prices(request):
-    with open("selenium/json/modelSCurrentPrices.json", "wb") as f:
+    with open("scrapers/json/modelSCurrentPrices.json", "wb") as f:
         s3.download_fileobj("teslaspectrajson", "modelSCurrentPrices.json", f)
-    with open('selenium/json/modelSCurrentPrices.json', 'r') as f:
+    with open('scrapers/json/modelSCurrentPrices.json', 'r') as f:
         #json.load provides us with a python dictionary from the json file
         prices = json.load(f)
 
-    with open("selenium/json/modelSHistoricalPrices.json", "wb") as f:
+    with open("scrapers/json/modelSHistoricalPrices.json", "wb") as f:
         s3.download_fileobj("teslaspectrajson", "modelSHistoricalPrices.json", f)
-    with open('selenium/json/modelSHistoricalPrices.json', 'r') as f2:
+    with open('scrapers/json/modelSHistoricalPrices.json', 'r') as f2:
         pastPrices = json.load(f2)
 #Render the context as 'context_data' taking in the python dictionaries as the key.
         return render(request, 'test.html', {'present_data': prices, 'past_data': pastPrices})
