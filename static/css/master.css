@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Montserrat:ital,wght@1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Electrolize&family=Montserrat:ital,wght@1,500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Cardo&family=Electrolize&family=Montserrat&display=swap');
 .nav-inner1 {
   display: flex; /* Use flex layout */
   align-items: center; /* Align child elements along the vertical axis */
@@ -22,28 +20,41 @@
   height: auto;
   max-width: calc(2vw + 50px);
   padding-left: 2px;
+  padding-top:  5px;
+  padding-bottom: 5px;
   margin-left: 0;
   align: left;
 }
 
-
-.metaltitle{
-  padding-top: 2vh;
-  font-family: 'Electrolize', sans-serif;
-  font-style: extra-bold;
-  font-size:calc(20vw+1em);
-   color: #e82127;
-
-
+.tab{
+font-family: 'Montserrat';
+font-style: extra-bold;
+font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
-.dollasign{
+.metaltitle{
+  padding-top: 0.5vh;
+  font-family: 'Electrolize';
+  font-style: extra-bold;
+  font-size: clamp(20px, 8vw, 48px);
+  color: #e82127;
+  margin-left: -50px;
+}
+
+.dollarsign{
 color: #85bb65;
 font-family: 'Cardo';
 text-shadow: 2px 2px 2px #ababab;
 
-    // dont forget "display", "height" and "width" attributes
+
 }
+
+
+.fire-icon {
+padding-bottom: 5px;
+}
+
+
 
 
 .header{
@@ -54,30 +65,87 @@ text-shadow: 2px 2px 2px #ababab;
 }
 
 .iframe {
+    width: 100%; /* 100% width of parent element */
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 56.25%; /* maintain the aspect ratio */
+}
+
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* proportion value of your video */
+  height: 0;
+}
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/* Responsive header elements */
+
+h1 {
+font-size: clamp(2rem, 3vw, 4rem);
+text-shadow: 2px 2px 2px #ababab;
+}
+
+h2 {
+font-size: clamp(1.75rem, 2.75vw, 3.75rem);
+text-shadow: 2px 2px 2px #ababab;
+}
+
+h3 {
+text-shadow: 2px 2px 2px #ababab;
+}
+
+h4 {
+font-size: clamp(1.25rem, 2vw, 2.5rem);
+text-shadow: 2px 2px 2px #ababab;
+}
+
+h5 {
+font-size: clamp(0.5rem, 1.5vw, 1.5rem); /* Minimum font size of 3rem, scales down to 1rem at maximum viewport width of 100vw */
+text-shadow: 2px 2px 2px #ababab;
+}
+
+h6 {
+font-size: clamp(0.5rem, 1vw, 0.75rem); /* Minimum font size of 2.5rem, scales down to 0.75rem at maximum viewport width of 100vw */
+text-shadow: 2px 2px 2px #ababab;
 }
 
 .jumbotron {
+ margin: auto;
  align-items: center;
  padding-top: 10px;
- padding-left: 10px;
- padding-right: 10px;
+ padding-left: 2vw;
+ padding-right: 2vw;
  margin-bottom: 2rem;
+ max-width: 800px;
  padding-bottom: 0.5vh;
- background-color: #e9ecef;
+ background-color: #ffffff;
  border-radius: .3rem;
 }
+
+body {
+  background: #cccccc;
+}
+
+.jumbotron h2, .jumbotron h3, .jumbotron h4, .jumbotron p {
+  font-family: 'Montserrat';
+  text-shadow: 1px 1px 1px #ababab;
+}
+
+
 
 .turnBlue{
     color: blue;
 }
-
-
-h2{
-font-size:2.5em;
-text-align: center;
 
 }
 
@@ -123,11 +191,10 @@ td{
 }
 
 
-.container{
+container{
 display: flex;
 }
 a:link{
-color: blue;
 }
 
 a:hover { text-decoration: none; }
