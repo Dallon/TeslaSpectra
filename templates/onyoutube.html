@@ -1,32 +1,36 @@
 {% extends 'base.html' %}
 {% load custom_tags %}
+{% block head %}
+    <title>Tesla on YouTube - Latest Videos and Channel Updates</title>
+    <meta name="description" content="Stay up-to-date with the latest Tesla videos on YouTube. Explore channel updates, product releases, and more.">
+    <meta name="keywords" content="Tesla, YouTube, Videos, Channel Updates, Product Releases">
+    <meta name="robots" content="index, follow">
+
+{% endblock %}
+
 {% block content %}
 
 <div>
      <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="{% url 'home' %}">Home</a>
+      <a class="nav-link tab" data-toggle="tab" href="{% url 'home' %}">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" data-toggle="tab" href="{% url 'onyoutube' %}">On Youtube</a>
+      <a class="nav-link tab active" data-toggle="tab" href="{% url 'onyoutube' %}">On Youtube</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="{% url 'home' %}">Messages</a>
+      <a class="nav-link tab" data-toggle="tab" href="{% url 'onreddit' %}">On Reddit</a>
     </li>
   </ul>
 
-<---tab panes ---->
-
 <div class="tab-content">
   <div id="home" class="container tab-pane fade"><br>
-    <h3>Home</h3>
   </div>
   <div id="youtube" class="container tab-pane active"><br>
-    <h3>Tesla On Youtube</h3>
   </div>
-  <div id="messages" class="container tab-pane fade"><br>
-    <h3>Messages</h3>
+  <div id="reddit" class="container tab-pane fade"><br>
+
   </div>
 </div>
 
@@ -40,14 +44,17 @@
     {% with embed_url_key=channel_title|addstr:" embed_url" %}
     {% with published_at_key=channel_title|addstr:" published_at" %}
       <div class = "jumbotron">
-        <h4> Recent Video from {{channel_title}}</h4>
-        <h5> {{youtube_vids|get_item:title_key}}</h5>
-        <div class = "iframe">
-        <iframe class  src={{youtube_vids|get_item:embed_url_key}} frameborder="3" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2> Recent video from {{channel_title}}</h2>
+        <h3> {{youtube_vids|get_item:title_key}}</h3>
+       <div class='video-wrapper'>
+        <iframe class  src={{youtube_vids|get_item:embed_url_key}}?rel=0 frameborder="3"
+                allow="same-origin"
+                allowfullscreen sandbox="allow-scripts allow-same-origin
+                allow-presentation"></iframe>
         </div>
-        <h6>Description</h6>
-        <p>{{youtube_vids|get_item:description_key}}</p>
-        <p>Published at: {{youtube_vids|get_item:published_at_key}}, "video provided by YouTube"</p>
+        <h3>Description</h3>
+        <h4>{{youtube_vids|get_item:description_key}}</h4>
+        <h5>Published at: {{youtube_vids|get_item:published_at_key}}, video provided by YouTube</h5>
       </div>
 
     {% endwith %}
@@ -59,6 +66,4 @@
 </div>
 
 </div>
-
-
 {% endblock %}
