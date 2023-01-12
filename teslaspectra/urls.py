@@ -24,6 +24,7 @@ urlpatterns = [
     path('accounts/', include('accounts.urls',namespace='accounts')),
     path('accounts/', include('django.contrib.auth.urls')),
     path('onyoutube/', views.youtube_page, name='onyoutube'),
+    path('onreddit/', views.reddit_page, name='onreddit'),
     path('test/', views.model_s_prices,name='test'),
     path('thanks/', views.thanks_page.as_view(), name='thanks'),
     path('groups/', include('groups.urls', namespace='groups')),
