@@ -3,7 +3,7 @@ import os
 import json
 import googleapiclient.errors
 from logs import secretkeys
-from scrapers.youtube_store_video_info import store_video_details
+from youtube_store_video_info import store_video_details
 from youtube_upload_vid_to_S3 import upload_vid_details_to_S3
 from youtube_check_tag_compare_title import check_e_tag_compare_title
 import googleapiclient.discovery
