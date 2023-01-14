@@ -5,6 +5,7 @@
     <meta name="robots" content="index, follow">
     <meta name="description" content="This page displays the title, vote count, and link to a recent Reddit post.">
     <meta name="keywords" content="Reddit, post, title, vote count, link">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 {% endblock %}
 
 {% block content %}
@@ -34,7 +35,7 @@
 </div>
 
 
-<div class="container">
+<div class = "jumbotron_container">
 
   {% for subreddit in subreddits %}
     {% with post_title=subreddit|addstr:" postTitle" %}
