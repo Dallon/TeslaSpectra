@@ -43,7 +43,7 @@
     {% with embed_url_key=channel_title|addstr:" embed_url" %}
     {% with published_at_key=channel_title|addstr:" published_at" %}
 <div class = "jumbotron_container">
-      <div class = "jumbotron">
+      <div id = "jumbotron" class = "YouTube-jumbotron">
         <span class = "from">From: </span><span class = "yt_channel_name">{{channel_title}}</span>
         <h2> {{youtube_vids|get_item:title_key}}</h2>
        <div class='video-wrapper'>
