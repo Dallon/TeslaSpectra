@@ -14,10 +14,12 @@ s3 = boto3.client('s3', aws_access_key_id=secretkeys.aws_access_key_id,
                   aws_secret_access_key=secretkeys.aws_secret_access_key)
 
 
-#this function assumes you have already populated the json file with a dictionary containing
-#scraped patent details
+
 logging.basicConfig(filename='logs/Patent_App_check.log', filemode='w',
                     format='%(asctime)s - %(message)s', level=logging.INFO)
+
+#this function assumes you have already populated the json file with a dictionary containing
+#scraped patent details
 
 
 def store_patent_info(driver, patentEntry):
@@ -29,31 +31,39 @@ def store_patent_info(driver, patentEntry):
         #in case there is more than one patent published in a day, iterate through the rows
         # in column 14 in the table shown, comparing the previously scraped title stored in
         # our json file with the newly scraped title
-        patentTitle = driver.find_element(By.XPATH, "(//div[@data-cell=14])[{}]".format(i)).text
-        # print(archivedPatent["patentTitle"])
+        scraped_patent_title = driver.find_element(By.XPATH, "(//div[@data-cell=14])[{}]".format(i)).text
         # print(archivedPatent["patent{}".format(i)])
-        # Check if patentTitle just scraped is already in archivedPatent
+
+        # Check if scraped_patent_title just scraped is already in archivedPatent.
+
         already_scraped = False
+
         for value in archivedPatent.values():
-            if value == patentTitle:
+            # If it is, we don't need to look any further because the patents are in descending
+            # order of date published.
+            if scraped_patent_title == value:
                 already_scraped = True
+
                 break
 
         if already_scraped:
-            print("There has been no new patent published")
+            # print("There has been no new patent published")
+            logging.info("There has been no new patent published")
             break
 
         else:
-            print("there has been a new patent published!")
+            # print("there has been a new patent published!")
+            logging.info("there has been a new patent published!")
             patentPublishDate = driver.find_element(By.XPATH, "(//div[@data-cell=11])[{}]".format(i)).text
-            print(patentPublishDate)
+            # print(patentPublishDate)
+            logging.info(patentPublishDate)
             patentDocButton = driver.find_element(By.XPATH, "(//div[@data-cell=10])[{}]".format(i))
             patentDocButton.click()
             time.sleep(3)
             #once the doc button is clicked we can scrape the abstract from the now visible patent document
             patentAbstract = driver.find_element(By.XPATH, "//p[@data-section = "
                                                            "'abstract' and @id = '3']").text
-            patentEntry["patent{}".format(i)] = patentTitle
+            patentEntry["patent{}".format(i)] = scraped_patent_title
             patentEntry["publishing date{}".format(i)] = patentPublishDate
             patentEntry["abstract{}".format(i)] = patentAbstract
             newPatentScraped = True
