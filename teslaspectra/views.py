@@ -53,6 +53,9 @@ def reddit_page(request):
                                              })
 
 
+def base(request):
+    accepted_cookies = request.COOKIES.get('accepted_cookies')
+    return render(request, 'base.html', {'accepted_cookies': accepted_cookies})
 
 
 class test_page(TemplateView):
