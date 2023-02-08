@@ -5,18 +5,27 @@
     <meta charset="utf-8">
 
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo=" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="{% static '/js/js.cookie.js'%}"></script>
 
-
+    {% if "accepted_cookies" in request.COOKIES %}
+    {% if request.COOKIES.accepted_cookies == "true" %}
       <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQYNTKFHS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-NWQYNTKFHS"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      gtag('config', 'G-NWQYNTKFHS');
-    </script>
+        gtag('config', 'G-NWQYNTKFHS');
+      </script>
+    {% endif %}
+    {% else %}
+
+      <!-- Do not include your Google Analytics code here -->
+    {% endif %}
     <link rel="stylesheet" href="{% static '/css/master.css'%}">
+
 
   </head>
  <nav class="header">
@@ -29,15 +38,25 @@
               <div class="metaltitle">TeslaSpectra</div>
        </div>
     </nav>
+<div id="cookie-banner" style="display: none;">
+  <p>This website uses cookies to improve your experience. <a href="#" id="learn-more-link">Learn More</a></p>
+  <div id="cookie-banner-details" style="display: none;">
+    <p>This website uses cookies to identify the number of visitors to the site through Google Analytics.
+    There are also 3rd party cookies associated with the YouTube videos which collect information
+    consistent YouTube's privacy policies.</p>
+  </div>  <button id="accept-cookies">Accept</button>
+  <button id="decline-cookies">Decline</button>
+</div>
 <body>
+
     {% block content %}
     {% endblock %}
 
 
-<script src="https://code.jquery.com/jquery-3.6.3.slim.min.js" integrity="sha256-ZwqZIVdD3iXNyGHbSYdsmWP//UBokj2FHAxKuSBKDSo="
-  crossorigin="anonymous"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
   <script src="{% static '/js/teslaspectra.js'%}"></script>
+    <script src="{% static '/js/cookiebanner.js'%}"></script>
 </body>
 </html>
