@@ -22,6 +22,7 @@ including information about new models, patent filings, and more.">
     </li>
     <li class="nav-item">
       <a class="nav-link tab" data-toggle="tab" href="{% url 'onyoutube' %}">On YouTube</a>
+
     </li>
     <li class="nav-item">
       <a class="nav-link tab" data-toggle="tab" href="{% url 'onreddit' %}">On Reddit</a>
@@ -46,12 +47,13 @@ including information about new models, patent filings, and more.">
   {% if patent_key in recent_patent %}
     {% with pub_date_key="publishing date"|add:i %}
     {% with abstract_key="abstract"|add:i %}
-      <div class = "jumbotron">
-        <h3>Tesla's recent patent filing</h3>
+      <div id = "jumbotron">
+        <h3>Tesla's recent patent filing:</h3>
         <h2> {{recent_patent|get_item:patent_key}}</h2>
-        <h5>filed on: {{recent_patent|get_item:pub_date_key}}</h5>
+
         <h4>Abstract</h4>
         <p>{{recent_patent|get_item:abstract_key}}</p>
+        <p>filed on: {{recent_patent|get_item:pub_date_key}}</p>
       </div>
     {% endwith %}
     {% endwith %}
