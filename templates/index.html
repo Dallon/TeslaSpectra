@@ -21,7 +21,7 @@ including information about new models, patent filings, and more.">
       <a class="nav-link tab active" data-toggle="tab" href="{% url 'home' %}">Home</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link tab" data-toggle="tab" href="{% url 'onyoutube' %}">On Youtube</a>
+      <a class="nav-link tab" data-toggle="tab" href="{% url 'onyoutube' %}">On YouTube</a>
     </li>
     <li class="nav-item">
       <a class="nav-link tab" data-toggle="tab" href="{% url 'onreddit' %}">On Reddit</a>
@@ -58,7 +58,5 @@ including information about new models, patent filings, and more.">
     {% endif %}
     {% endwith %}
     {% endfor %}
-    <p>Model S price:${{ present_data|get_item:"Model_S" }}, </p>
-    <p>Model S Plaid price:${{present_data|get_item:"Model_S_Plaid"}}</p>
 </div>
 {% endblock %}
