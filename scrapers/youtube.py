@@ -15,13 +15,11 @@ logging.basicConfig(filename='logs/youtube.log', filemode='w',
 
 def youtubescrape():
     try:
-        channels = [secretkeys.tesla_daily_id, secretkeys.the_limiting_factor_id,
-                secretkeys.the_tesla_space_id]
+        channels = [secretkeys.tesla_daily_id, secretkeys.the_limiting_factor_id,  secretkeys.the_tesla_space_id]
 
         videoDetails = {}
-
+        already_scraped = 0
         for channel in channels:
-            new_scrape = False
 
             # the ID of the YouTube channel
             CHANNEL_TITLE = channel["channel_title"]
@@ -51,27 +49,28 @@ def youtubescrape():
                 title = video['snippet']['title']
 
             #compare the e_tag and title stored to the newly scraped respective values
-
             videoDetailsStored = check_e_tag_compare_title(CHANNEL_TITLE, e_tag, title)
+
             # print(videoDetailsStored)
 
             logging.info("videoDetailStored Function completed for {}".format(CHANNEL_TITLE))
-            # if the video details are already stored, add the previously scraped details to
-            # VideoDetails using stored_video_details function
+            # if the video details are already stored add the previously scraped details to
+            # VideoDetails using the store_video_details function
             if videoDetailsStored:
                 logging.info("videoDetails already stored for {}".format(CHANNEL_TITLE))
+                already_scraped += 1
                 with open(script_dir + "/json/youtubeinfo.json", "rb") as f:
                     storedDetails = json.load(f)
                 #title already declared above
                 description = storedDetails["{} description".format(CHANNEL_TITLE)]
                 embed_url = storedDetails["{} embed_url".format(CHANNEL_TITLE)]
                 published_at = storedDetails["{} published_at".format(CHANNEL_TITLE)]
+                print(published_at)
                 e_tag = e_tag
                 store_video_details(videoDetails, title, description,
                                     embed_url, published_at, e_tag, CHANNEL_TITLE)
 
             if not videoDetailsStored:
-                new_scrape = True
                 logging.info("the video details have not been scraped for {}".format(CHANNEL_TITLE))
                 # Iterate over the list of videos
                 for video in response['items']:
@@ -80,13 +79,14 @@ def youtubescrape():
                     title = video['snippet']['title']
                     description = video['snippet']['description']
                     published_at = video['snippet']['publishedAt']
+                    print(published_at)
 
                     # Build the video embed URL
                     embed_url = f'https://www.youtube.com/embed/{videoId}'
 
                     #attach video details to the dictionary
                     store_video_details(videoDetails, title, description,
-                                                embed_url, published_at, e_tag, CHANNEL_TITLE)
+                            embed_url, published_at, e_tag, CHANNEL_TITLE)
                     logging.info("video details added to dictionary for {}".format(CHANNEL_TITLE))
 
     except Exception as e:
@@ -95,12 +95,15 @@ def youtubescrape():
         logging.info(f'An error occurred: {error}')
 
     finally:
-        if new_scrape:
+        if already_scraped == len(channels) and len(channels) > 1:
+            logging.info("videos were all already scraped------------------------------------")
+        elif videoDetails != {}:
             upload_vid_details_to_S3(videoDetails)
-            # print("end of script--------------------------------------------------------------------")
+            print("end of script--------------------------------------------------------------------")
             logging.info("uploaded details, end of script-------------------------------------------------------------")
+
         else:
-            logging.info("not uploading details, script ended")
+            logging.info("an error occured")
 
 
 youtubescrape()
