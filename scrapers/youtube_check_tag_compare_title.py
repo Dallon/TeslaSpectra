@@ -27,7 +27,7 @@ def check_e_tag_compare_title(CHANNEL_TITLE, e_tag, title):
                 if storedInfo["{} vid_title".format(CHANNEL_TITLE)] == title:
                     videoDetailsAlreadyStored = True
 
-            elif e_tag is not None and "{} e_tag".format(CHANNEL_TITLE) in storedInfo:
+            if e_tag is not None and "{} e_tag".format(CHANNEL_TITLE) in storedInfo:
                 # Check if e_tag matches the stored e_tag
                 if storedInfo["{} e_tag".format(CHANNEL_TITLE)] == e_tag:
                     videoDetailsAlreadyStored = True
