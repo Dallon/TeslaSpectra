@@ -29,28 +29,28 @@
   </div>
   <div id="youtube" class="container tab-pane fade"><br>
   </div>
-  <div id="reddit" class="container tab-pane active"><br>
-
-  </div>
+  <div id="reddit" class="container tab-pane active"><br></div>
+</div>
 </div>
 
 
 <div class = "jumbotron_container">
-
   {% for subreddit in subreddits %}
     {% with post_title=subreddit|addstr:" postTitle" %}
     {% with post_upvotes=subreddit|addstr:" postUpvotes" %}
     {% with hot_post=subreddit|addstr:" hotPost" %}
     {% with post_link=subreddit|addstr:" postLink" %}
-      <div class = "jumbotron">
+    <div id = "jumbotron" class = "Reddit-jumbotron">
+
           {% if subreddit_details|get_item:hot_post == "Hot" %}
-           <h2><a href="{{subreddit_details|get_item:post_link}}" target="_blank">
+           <h2><a id="a-Reddit" href="{{subreddit_details|get_item:post_link}}" target="_blank">
            the hottest post for reddit on r/{{subreddit}}</a><img src="/static/media/fire.svg"></a></h2>
           {% else %}
-           <h2><a href="{{subreddit_details|get_item:post_link}}" target="_blank">
+           <h2><a id="a-Reddit" href="{{subreddit_details|get_item:post_link}}" target="_blank">
         the hottest post for reddit on r/{{subreddit}}</a></h2>
           {% endif %}
-          <h3> {{subreddit_details|get_item:post_title}}</h3><h4>{{subreddit_details|get_item:post_upvotes}} Upvotes</h4>
+          <h3> {{subreddit_details|get_item:post_title}}</h3>
+          <h4>{{subreddit_details|get_item:post_upvotes}} Upvotes</h4>
       </div>
     {% endwith %}
     {% endwith %}
@@ -59,7 +59,7 @@
 {% endfor %}
 </div>
 
-</div>
+
 
 
 {% endblock %}
