@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 import json
 import boto3
 from teslaspectra import settings
@@ -46,8 +46,7 @@ def reddit_page(request):
         s3.download_fileobj('teslaspectrajson', 'subreddits.json', f)
     with open('scrapers/json/subreddits.json', 'r') as subreddit_details:
         subreddit_details = json.load(subreddit_details)
-        subreddits = ["TeslaMotors", "TeslaInvestorsClub", "Cybertruck", "RealTesla",
-                      "TeslaPorn"]
+        subreddits = ["TeslaMotors", "TeslaInvestorsClub", "Cybertruck", "RealTesla"]
 
     return render(request, 'onreddit.html', {'subreddit_details': subreddit_details, 'subreddits':subreddits
                                              })
