@@ -204,10 +204,10 @@ h6 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
+  width: 80%;
   background-color: #f1f1f1 !important;
   padding: 10px;
-  font-size: clamp(1.0rem, 2.5vw, 3.00rem);
+  font-size: clamp(1.5rem, 3vw, 4.00rem);
   text-align: center;
   border: 2px solid #ccc;
 }
