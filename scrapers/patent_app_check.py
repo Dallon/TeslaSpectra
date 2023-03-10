@@ -42,7 +42,6 @@ def check_patent():
         inputText.send_keys("Tesla, Inc"[::-1])
         searchButton = driver.find_element(By.ID, "search-btn-search")
         searchButton.click()
-        time.sleep(10)
 
         patentEntry = {}
         #now that we have clicked search and made our empty dict
