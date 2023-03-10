@@ -33,13 +33,12 @@ def retrieve_post_details():
 
                              user_agent='TeslaSpectra by /u/RepulsivePromotion58',
                              )
-        subreddits = ["TeslaMotors", "TeslaInvestorsClub","Cybertruck","RealTesla",
-                      "TeslaPorn"]
+        subreddits = ["TeslaMotors", "TeslaInvestorsClub","Cybertruck","RealTesla"]
         topPostDict = {}
         for subreddit in subreddits:
             subreddit = reddit_read_only.subreddit(subreddit)
             topPostOfDay = False
-            for post in subreddit.hot(limit=5):
+            for post in subreddit.hot(limit=4):
                 #post.created is the utc timestamp
                 created_utc = post.created
                 #we use .date() at the end below to convert from datetime.datetime to datetime.date
@@ -77,9 +76,9 @@ def retrieve_post_details():
                     topPostDict["{} scraped_at".format(subreddit)] = str(dateTimeObj)
                     topPostDict["{} postLink".format(subreddit)] ="https://www.reddit.com/"+\
                                                                  postUrl
-                    print(topPostDict)
-                    print("{} postTitle".format(subreddit) +
-                          " scraped")
+                    # print(topPostDict)
+                    # print("{} postTitle".format(subreddit) +
+                    #       " scraped")
                     logging.info("{} postTitle".format(subreddit) + "scraped")
 
         with open(script_dir + '/json/subreddits.json', 'w') as outfile:
@@ -100,7 +99,7 @@ def retrieve_post_details():
         logging.info("scraper completed")
 
 
-# retrieve_post_details()
+retrieve_post_details()
 
 
-print(timeit.Timer(retrieve_post_details).timeit(number=1))
+# print(timeit.Timer(retrieve_post_details).timeit(number=1))
