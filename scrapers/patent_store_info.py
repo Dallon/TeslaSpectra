@@ -60,7 +60,7 @@ def store_patent_info(driver, patentEntry):
 
         if already_scraped:
             # print("There has been no new patent published")
-            logging.info("There has been no new patent published")
+            logging.info("There has been no new patent published since " + scraped_patent_title)
             break
 
         else:
@@ -101,4 +101,3 @@ def store_patent_info(driver, patentEntry):
             logging.info("new patent details uploaded to S3")
 
     logging.info("end of helper function")
-
