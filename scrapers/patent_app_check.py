@@ -39,7 +39,7 @@ def check_patent():
         USPatDBSelect.click()
         searchDefaultOperator.select_by_value("ADJ")
         inputText.click()
-        inputText.send_keys("Tesla, Inc"[::-1])
+        inputText.send_keys("Tesla, Inc.as."[::-1])
         searchButton = driver.find_element(By.ID, "search-btn-search")
         searchButton.click()
 
